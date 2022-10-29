@@ -19,7 +19,7 @@ struct WelcomePage: View {
                 VStack {
                     //Insert Icon Here
                     NavigationLink {
-                        EnterInputPage()
+                        EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
                     } label: {
                         ButtonDisplay(text: "Email Generating")
                     }
@@ -40,7 +40,7 @@ struct WelcomePage: View {
                             .padding(20)
                     }
                 }
-                .navigationTitle("Welcome")
+                .navigationTitle("Homepage")
                 .navigationBarTitleDisplayMode(.inline)
             }
             .ignoresSafeArea(.all)
