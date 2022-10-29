@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB1290CB94E003FEA6F /* TutorialPage.swift */; };
 		A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CA29038F45000201FD /* FGRNApp.swift */; };
 		A2D075CD29038F45000201FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CC29038F45000201FD /* ContentView.swift */; };
 		A2D075CF29038F47000201FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D075CE29038F47000201FD /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200F5BB1290CB94E003FEA6F /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		A2D075C729038F45000201FD /* FGRN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FGRN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D075CA29038F45000201FD /* FGRNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGRNApp.swift; sourceTree = "<group>"; };
 		A2D075CC29038F45000201FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				A2D075CA29038F45000201FD /* FGRNApp.swift */,
 				A2D075CC29038F45000201FD /* ContentView.swift */,
+				200F5BB1290CB94E003FEA6F /* TutorialPage.swift */,
 				A2D075CE29038F47000201FD /* Assets.xcassets */,
 				A2D075D029038F47000201FD /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				A2D075CD29038F45000201FD /* ContentView.swift in Sources */,
 				A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */,
+				200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
