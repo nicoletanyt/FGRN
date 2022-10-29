@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct TutorialPage: View {
+    
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.darkTeal)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.lightBlue)
+     }
+    
     var body: some View {
         VStack {
-            Text("Welcome.")
+            Text("Tutorial.")
                 .font(.largeTitle)
                 .fontWeight(.black)
+                .padding()
             Text("How to use the app:")
                 .font(.title)
                 .padding()
@@ -36,18 +43,10 @@ struct TutorialPage: View {
                     Text("Done! Now you can use the information to write your email.")
                         .font(.title)
                         .padding()
-                    Button {
-                        // go to welcome page
-                    } label: {
-                        Text("Welcome Page")
-                        Image(systemName: "chevron.right")
-                    }
-                    .font(.title2)
-                    .foregroundColor(.black)
                 }
             }
          
-            .background(.cyan)
+            .background(Color.lightTeal)
             .cornerRadius(20)
             .padding(40)
             

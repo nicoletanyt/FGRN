@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct WelcomePage: View {
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,9 +24,20 @@ struct WelcomePage: View {
                         ButtonDisplay(text: "Email Generating")
                     }
                     NavigationLink {
-                        
+                        TutorialPage()
                     } label: {
-                        ButtonDisplay(text: "Credits")
+                        ButtonDisplay(text: "Tutorial")
+                    }
+                    NavigationLink {
+                        CreditsPage()
+                    } label: {
+                        Text("Credits")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.darkTeal)
+                            .frame(width: 300, height: 50)
+                            .background(Color.lightTeal)
+                            .cornerRadius(10)
+                            .padding(20)
                     }
                 }
                 .navigationTitle("Welcome")
@@ -47,7 +62,7 @@ struct ButtonDisplay: View {
     }
 }
 
-struct TutorialPage_Previews: PreviewProvider {
+struct WelcomePage_Previews: PreviewProvider {
     static var previews: some View {
         WelcomePage()
     }
