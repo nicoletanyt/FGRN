@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WelcomePage: View {
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -15,7 +16,7 @@ struct WelcomePage: View {
                 VStack {
                     //Insert Icon Here
                     NavigationLink {
-                        EnterInputPage()
+                        EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
                     } label: {
                         ButtonDisplay(text: "Email Generating")
                     }
@@ -25,7 +26,7 @@ struct WelcomePage: View {
                         ButtonDisplay(text: "Credits")
                     }
                 }
-                .navigationTitle("Welcome")
+                .navigationTitle("Homepage")
                 .navigationBarTitleDisplayMode(.inline)
             }
             .ignoresSafeArea(.all)
@@ -47,7 +48,7 @@ struct ButtonDisplay: View {
     }
 }
 
-struct TutorialPage_Previews: PreviewProvider {
+struct WelcomePage_Previews: PreviewProvider {
     static var previews: some View {
         WelcomePage()
     }
