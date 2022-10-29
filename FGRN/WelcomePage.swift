@@ -12,17 +12,23 @@ struct WelcomePage: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
     }
     
+    @State var languageToggle = false
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color.darkTeal
                 VStack {
                     //Insert Icon Here
+                    Toggle(languageToggle ? "Change Chinese to English" : "Change English to Chinese", isOn: $languageToggle)
+                        .padding()
+                        .foregroundColor(.white)
                     NavigationLink {
                         EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
                     } label: {
-                        ButtonDisplay(text: "Email Generating")
-                    }
+                        ButtonDisplay(text: languageToggle ? "写电邮" : "Email Generating")
+                        }
+                    
                     NavigationLink {
                         TutorialPage()
                     } label: {

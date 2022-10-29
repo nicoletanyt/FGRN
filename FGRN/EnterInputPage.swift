@@ -11,6 +11,7 @@ struct EnterInputPage: View {
     @State var question: Question
     @State var currentQuestionNum: Int
     
+    @State var language = WelcomePage().languageToggle
     var body: some View {
         NavigationView {
             VStack {
@@ -18,9 +19,11 @@ struct EnterInputPage: View {
                     .foregroundColor(Color.darkTeal)
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
-                TextField("Enter Your Input", text: $question.input)
-                    .font(.system(size: 25))
-                    .foregroundColor(Color.lightBlue)
+                if question.options != nil {
+                    TextField("Enter Your Input", text: $question.input)
+                        .font(.system(size: 25))
+                        .foregroundColor(Color.lightBlue)
+                }
                 Divider()
                  .frame(height: 4)
                  .background(Color.lightBlue)
@@ -32,7 +35,7 @@ struct EnterInputPage: View {
                         .padding()
                         .background(Color.darkTeal)
                         .foregroundColor(Color.white)
-                        .cornerRadius(15)
+                        .cornerRadius(50)
                 }
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
