@@ -39,6 +39,7 @@ struct EnterInputPage: View {
                         Button {
                             //Toggle previous question
                             if currentQuestionNum > 0 {
+                                arrayOfQuestions[currentQuestionNum] = question //saves the question
                                 currentQuestionNum -= 1
                                 question = arrayOfQuestions[currentQuestionNum]
                             }
@@ -51,6 +52,7 @@ struct EnterInputPage: View {
                         Button {
                             //Toggle next question
                             if currentQuestionNum < arrayOfQuestions.count - 1{
+                                arrayOfQuestions[currentQuestionNum] = question //saves the question
                                 currentQuestionNum += 1
                                 question = arrayOfQuestions[currentQuestionNum]
                             }
