@@ -10,6 +10,7 @@ import SwiftUI
 struct EnterInputPage: View {
     @State var question: Question
     @State var currentQuestionNum: Int
+    @State var currentProgress: CGFloat = 0.0
     
     var body: some View {
         NavigationView {
@@ -27,6 +28,18 @@ struct EnterInputPage: View {
             }
             .padding(.horizontal, 50)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ZStack (alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(Color.darkTeal)
+                            .frame(width: 300, height: 30)
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.white)
+                            .frame(width: 300 * currentProgress, height: 15)
+                            .padding(.horizontal, 10)
+                    }
+                    .padding()
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Image(systemName: "questionmark")
                         .padding()
@@ -42,6 +55,7 @@ struct EnterInputPage: View {
                                 arrayOfQuestions[currentQuestionNum] = question //saves the question
                                 currentQuestionNum -= 1
                                 question = arrayOfQuestions[currentQuestionNum]
+                                currentProgress -= 0.3
                             }
                         } label: {
                             if currentQuestionNum != 0 {
@@ -55,6 +69,8 @@ struct EnterInputPage: View {
                                 arrayOfQuestions[currentQuestionNum] = question //saves the question
                                 currentQuestionNum += 1
                                 question = arrayOfQuestions[currentQuestionNum]
+                                currentProgress += 0.3
+//                                CGFloat(1/arrayOfQuestions.count)
                             }
                         } label: {
                             toggleButton(next: true)
