@@ -6,13 +6,8 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct EnterInputPage: View {
-//    init() {
-//        UIPickerView.appearance().tintColor = UIColor.red
-//    }
-    
     @State var question: Question
     @State var currentQuestionNum: Int
     @State var currentProgress: CGFloat = 0.0
@@ -75,7 +70,7 @@ struct EnterInputPage: View {
                                     arrayOfQuestions[currentQuestionNum] = question //saves the question
                                     currentQuestionNum -= 1
                                     question = arrayOfQuestions[currentQuestionNum]
-                                    currentProgress -= 1/14
+                                    currentProgress -= 1/15
                                 }
                             } label: {
                                 if currentQuestionNum != 0 {
@@ -89,7 +84,28 @@ struct EnterInputPage: View {
                                     arrayOfQuestions[currentQuestionNum] = question //saves the question
                                     currentQuestionNum += 1
                                     question = arrayOfQuestions[currentQuestionNum]
-                                    currentProgress += 1/14 //14 is the number of questions in the array
+                                    currentProgress += 1/15 //15 is the number of questions in the array
+                                }
+                                if currentQuestionNum - 1 == 0 {
+                                    //question about time
+                                    if arrayOfQuestions[currentQuestionNum - 1].input != "" {
+                                        //changes only if the input is changed, otherwise it'll give the default "day"
+                                        greetingFills[0] = arrayOfQuestions[currentQuestionNum - 1].input
+                                    }
+                                }
+                                if currentQuestionNum - 1 == 1 {
+                                    //currentQuestionNum == 1: second question about name
+                                    arrayOfQuestions[4].options[0] = "Dear " + arrayOfQuestions[currentQuestionNum - 1].input
+                                    arrayOfQuestions[4].options[3] = "Greetings " + arrayOfQuestions[currentQuestionNum - 1].input
+                                    arrayOfQuestions[4].options[5] = "Hi " + arrayOfQuestions[currentQuestionNum - 1].input
+                                    
+                                    greetingFills[1] = arrayOfQuestions[currentQuestionNum - 1].input //sets the name
+                                    arrayOfQuestions[4].options[4] = "Good " + greetingFills[0] + greetingFills[1]
+                                }
+                                if currentQuestionNum - 1 == 2 {
+                                    //currentQuestionNum == 2: third question about job of person
+                                    //this code will run when the current question is the next question so currentQuestionNum - 1 gives the answer of the previous question answered
+                                    arrayOfQuestions[4].options[1] = "Dear " + arrayOfQuestions[currentQuestionNum - 1].input
                                 }
                             } label: {
                                 toggleButton(next: true)

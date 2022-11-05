@@ -11,23 +11,26 @@ struct Question {
     var question: String
     var input: String
     var options: [String] = []
-    var questionNumber: Int
 }
 
+var greetingFills = ["Morning ", "Name "] //Good [morning / afternoon / evening / day] [name]
+
 var arrayOfQuestions: [Question] = [
-    Question(question: "What is your subject?", input: "", questionNumber: 1),
-    Question(question: "Enter the recipient's name.", input: "", questionNumber: 2),
-    Question(question: "Enter the recipent's job.", input: "", questionNumber: 3),
+    //Questions needed for email info
+    Question(question: "When do you want to send your email?", input: "", options: ["Morning", "Afternoon", "Evening", "Day"]),
+    Question(question: "Enter the recipient's name.", input: ""),
+    Question(question: "Enter the recipent's job.", input: ""),
     
-    Question(question: "Greeting", input: "", options: ["dear [name]", "dear [job]", "to whom it may concern", "greetings [name]", "good [morning / afternoon / evening / day] [name]", "hi [name]"], questionNumber: 4),
-    Question(question: "What is the purpose of your email?", input: "", questionNumber: 5),
-    Question(question: "Point 1", input: "", questionNumber: 6),
-    Question(question: "Action word", input: "", options: ["inform", "ask", "inquire", "advocate", "propose"], questionNumber: 7),
-    Question(question: "Question 1", input: "", questionNumber: 8),
-    Question(question: "Context?", input: "", questionNumber: 9),
-    Question(question: "Info 1", input: "", questionNumber: 10),
-    Question(question: "Info 2", input: "", questionNumber: 11),
-    Question(question: "Culture", input: "", questionNumber: 12),
-    Question(question: "Senstive issues of the audience", input: "", questionNumber: 13),
-    Question(question: "Closing", input: "", options: ["regards", "best regards", "yours sincerely", "yours faithfully", "thanks", "thank you", "thanks in advance", "cheers"], questionNumber: 13)
+    Question(question: "What is your subject?", input: ""),
+    Question(question: "Greeting", input: "", options: ["dear [name]", "dear [job]", "To whom it may concern", "greetings [name]", "Good [morning / afternoon / evening / day] [name]", "hi [name]"]),
+    Question(question: "What is the purpose of your email?", input: ""),
+    Question(question: "Point 1", input: ""),
+    Question(question: "Action word", input: "", options: ["inform", "ask", "inquire", "advocate", "propose"]),
+    Question(question: "Question 1", input: ""),
+    Question(question: "Context?", input: ""),
+    Question(question: "Info 1", input: ""),
+    Question(question: "Info 2", input: ""),
+    Question(question: "Culture", input: ""),
+    Question(question: "Senstive issues of the audience", input: ""),
+    Question(question: "Closing", input: "", options: ["regards", "best regards", "yours sincerely", "yours faithfully", "thanks", "thank you", "thanks in advance", "cheers"])
 ]
