@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB1290CB94E003FEA6F /* TutorialPage.swift */; };
 		200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */; };
+		204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */; };
+		204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */; };
+		204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */; };
 		A2556466290CB5A5007F3AC6 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556465290CB5A5007F3AC6 /* WelcomePage.swift */; };
 		A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556467290CB6A0007F3AC6 /* Colors.swift */; };
 		A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */; };
-		200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB1290CB94E003FEA6F /* TutorialPage.swift */; };
 		A255646C290CC169007F3AC6 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255646B290CC169007F3AC6 /* Questions.swift */; };
 		A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CA29038F45000201FD /* FGRNApp.swift */; };
 		A2D075CD29038F45000201FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CC29038F45000201FD /* ContentView.swift */; };
@@ -23,10 +25,12 @@
 /* Begin PBXFileReference section */
 		200F5BB1290CB94E003FEA6F /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPage.swift; sourceTree = "<group>"; };
+		204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayInfoPage.swift; sourceTree = "<group>"; };
+		204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoSheet.swift; sourceTree = "<group>"; };
+		204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
 		A2556465290CB5A5007F3AC6 /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 		A2556467290CB6A0007F3AC6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInputPage.swift; sourceTree = "<group>"; };
-		200F5BB1290CB94E003FEA6F /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		A255646B290CC169007F3AC6 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		A2D075C729038F45000201FD /* FGRN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FGRN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D075CA29038F45000201FD /* FGRNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGRNApp.swift; sourceTree = "<group>"; };
@@ -67,6 +71,9 @@
 			children = (
 				A255646B290CC169007F3AC6 /* Questions.swift */,
 				A2556467290CB6A0007F3AC6 /* Colors.swift */,
+				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
+				204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */,
+				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
 				A2D075CA29038F45000201FD /* FGRNApp.swift */,
 				A2D075CC29038F45000201FD /* ContentView.swift */,
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
@@ -162,9 +169,12 @@
 				A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */,
 				A255646C290CC169007F3AC6 /* Questions.swift in Sources */,
 				A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */,
+				204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */,
 				A2556466290CB5A5007F3AC6 /* WelcomePage.swift in Sources */,
+				204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */,
 				200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */,
 				200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */,
+				204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

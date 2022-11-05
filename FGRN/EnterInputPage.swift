@@ -16,7 +16,7 @@ struct EnterInputPage: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(question.question)
+                Text(question.question ?? "")
                     .foregroundColor(Color.darkTeal)
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
@@ -24,6 +24,8 @@ struct EnterInputPage: View {
                     TextField("Enter Your Input", text: $question.input)
                         .font(.system(size: 25))
                         .foregroundColor(Color.lightBlue)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
                 }
                 Divider()
                  .frame(height: 4)
