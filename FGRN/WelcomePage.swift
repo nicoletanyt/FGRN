@@ -20,9 +20,13 @@ struct WelcomePage: View {
                 Color.darkTeal
                 VStack {
                     //Insert Icon Here
+                    Image("APP-LOGO")
+                        .resizable()
+                        .frame(width: 200, height: 200)
                     Toggle(languageToggle ? "Change Chinese to English" : "Change English to Chinese", isOn: $languageToggle)
-                        .padding()
+//                        .padding()
                         .foregroundColor(.white)
+                        .frame(width: 300, height: 100)
                     NavigationLink {
                         EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
                     } label: {
