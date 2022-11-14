@@ -91,7 +91,7 @@ struct EnterInputPage: View {
                             Spacer()
                             if currentQuestionNum == arrayOfQuestions.count - 1 {
                                 NavigationLink {
-                                    DisplayInfoPage(questionsArray: questionsArray)
+                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
                                 }
