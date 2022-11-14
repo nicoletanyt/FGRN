@@ -13,6 +13,7 @@
 		204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */; };
 		204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */; };
 		204B7CA2291615F7007BD2F9 /* HintsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7CA1291615F7007BD2F9 /* HintsPage.swift */; };
+		5268309D291614220068229A /* Chinese Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268309C291614220068229A /* Chinese Questions.swift */; };
 		A2556466290CB5A5007F3AC6 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556465290CB5A5007F3AC6 /* WelcomePage.swift */; };
 		A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556467290CB6A0007F3AC6 /* Colors.swift */; };
 		A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */; };
@@ -30,6 +31,7 @@
 		204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoSheet.swift; sourceTree = "<group>"; };
 		204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
 		204B7CA1291615F7007BD2F9 /* HintsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsPage.swift; sourceTree = "<group>"; };
+		5268309C291614220068229A /* Chinese Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chinese Questions.swift"; sourceTree = "<group>"; };
 		A2556465290CB5A5007F3AC6 /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 		A2556467290CB6A0007F3AC6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInputPage.swift; sourceTree = "<group>"; };
@@ -71,6 +73,12 @@
 		A2D075C929038F45000201FD /* FGRN */ = {
 			isa = PBXGroup;
 			children = (
+				A255646B290CC169007F3AC6 /* Questions.swift */,
+				5268309C291614220068229A /* Chinese Questions.swift */,
+				A2556467290CB6A0007F3AC6 /* Colors.swift */,
+				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
+				204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */,
+				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
 				A2D075CA29038F45000201FD /* FGRNApp.swift */,
 				A2D075CC29038F45000201FD /* ContentView.swift */,
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
@@ -167,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5268309D291614220068229A /* Chinese Questions.swift in Sources */,
 				A2D075CD29038F45000201FD /* ContentView.swift in Sources */,
 				A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */,
 				A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */,
