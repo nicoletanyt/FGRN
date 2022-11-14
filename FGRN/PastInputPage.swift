@@ -11,16 +11,17 @@ struct PastInputPage: View {
     @EnvironmentObject var inputManager: InputDataStore
     var body: some View {
         List {
-            ForEach(inputManager.inputs) { userInputStruct in
-                ForEach(userInputStruct.inputQuestion.sorted(by: >), id: \.key) { question, answer in
-                    Text(question + answer)
+            ForEach(inputManager.inputs, id: \.self) { inputStruct in
+                NavigationLink {
+                    DisplayInfoPage(questionsArray: inputStruct)
+                } label: {
+                    Text("Recent")
                 }
             }
         }
-        
+        .navigationTitle("Email History")
         .onAppear {
             inputManager.loadInput()
-            print(inputManager.inputs)
         }
     }
 }
