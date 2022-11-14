@@ -40,7 +40,7 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Greeting")) {
-                    ForEach(4..<9) { question2 in
+                    ForEach(4..<5) { question2 in
                         NavigationLink {
                             InfoDetailView(question: $questions[question2])
                         } label: {
@@ -59,11 +59,11 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Content")) {
-                    ForEach(0..<3) { question1 in
+                    ForEach(6..<13) { question3 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question1])
+                            InfoDetailView(question: $questions[question3])
                         } label: {
-                            Text(questions[question1].input)
+                            Text(questions[question3].input)
                         }
                     }
                     .onDelete { indexSet in
@@ -78,11 +78,11 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Closing")) {
-                    ForEach(0..<3) { question1 in
+                    ForEach(14..<15) { question4 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question1])
+                            InfoDetailView(question: $questions[question4])
                         } label: {
-                            Text(questions[question1].input)
+                            Text(questions[question4].input)
                         }
                     }
                     .onDelete { indexSet in
