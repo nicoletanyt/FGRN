@@ -17,80 +17,84 @@ struct EnterInputPage: View {
     @State var isHintGiven = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text(question.question)
-                    .foregroundColor(Color.textColor)
-                    .font(.system(.largeTitle))
-                    .padding(.bottom, 200)
-                if question.options != [] {
-                    Picker (selection: $question.input) {
-                        ForEach(question.options, id: \.self) { option in
-                            Text(option)
-                                .tag(option)
-                                .foregroundColor(Color.lightBlue)
-                                .font(.system(size: 25))
-                        }
-                    } label: {
-                        Text("Picker")
+        //        NavigationView {
+        VStack {
+            Text(question.question)
+                .foregroundColor(Color.textColor)
+                .font(.system(.largeTitle))
+                .padding(.bottom, 200)
+            if question.options != [] {
+                Picker (selection: $question.input) {
+                    ForEach(question.options, id: \.self) { option in
+                        Text(option)
+                            .tag(option)
+                            .foregroundColor(Color.lightBlue)
+                            .font(.system(size: 25))
                     }
-                    .pickerStyle(.menu)
-                    
-                } else {
-                    TextField(language ? "输入" : "Enter Your Input", text: $question.input)
-                        .font(.system(size: 25))
-                        .foregroundColor(Color.lightBlue)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
+                } label: {
+                    Text("Picker")
                 }
-                Divider()
-                    .frame(height: 4)
-                    .background(Color.lightBlue)
-            }         .padding(.horizontal, 50)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        ZStack (alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(Color.darkTeal)
-                                .frame(width: 300, height: 30)
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color.white)
-                                .frame(width: 300 * currentProgress, height: 15)
-                                .padding(.horizontal, 10)
-                        }
-                        .padding()
+                .pickerStyle(.menu)
+                
+            } else {
+                TextField(language ? "输入" : "Enter Your Input", text: $question.input)
+                    .font(.system(size: 25))
+                    .foregroundColor(Color.lightBlue)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+            }
+            Divider()
+                .frame(height: 4)
+                .background(Color.lightBlue)
+        }         .padding(.horizontal, 50)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ZStack (alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(Color.darkTeal)
+                            .frame(width: 300, height: 30)
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.white)
+                            .frame(width: 300 * currentProgress, height: 15)
+                            .padding(.horizontal, 10)
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    .padding()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isHintGiven = true
+                        // do something
+                    } label: {
+                        Image(systemName: "questionmark")
+                            .padding()
+                            .background(Color.darkTeal)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(50)
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
                         Button {
-                            isHintGiven = true
-                            // do something
-                        } label: {
-                            Image(systemName: "questionmark")
-                                .padding()
-                                .background(Color.darkTeal)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(50)
-                        }
-                    }
-                    ToolbarItem(placement: .bottomBar) {
-                        
-                        HStack {
-                            Button {
-                                //Toggle previous question
-                                if currentQuestionNum > 0 {
-                                    questionsArray[currentQuestionNum] = question //saves the question
-                                    currentQuestionNum -= 1
-                                    question = questionsArray[currentQuestionNum]
-                                    currentProgress -= 1/16
-                                }
-                            } label: {
-                                if currentQuestionNum != 0 {
-                                    toggleButton(next: false, language: language)
-                                }
+                            //Toggle previous question
+                            if currentQuestionNum > 0 {
+                                questionsArray[currentQuestionNum] = question //saves the question
+                                currentQuestionNum -= 1
+                                question = questionsArray[currentQuestionNum]
+                                currentProgress -= 1/16
                             }
-                            Spacer()
-                            
-                            
+                        } label: {
+                            if currentQuestionNum != 0 {
+                                toggleButton(type: language ? "返回" : "Back")
+                            }
+                        }
+                        Spacer()
+                        if currentQuestionNum == arrayOfQuestions.count - 1 {
+                            NavigationLink {
+                                DisplayInfoPage()
+                            } label: {
+                                toggleButton(type: language ? "制造" : "Generate")
+                            }
+                        } else {
                             Button {
                                 
                                 //Toggle next question
@@ -139,32 +143,28 @@ struct EnterInputPage: View {
                                     }
                                 }
                             } label: {
-                                toggleButton(next: true, language: language)
+                                toggleButton(type: language ? "下一题" : "Next")
                             }
                             
                         }
                         
                     }
                 }
-        }
-        .sheet(isPresented: $isHintGiven) {
-            HintsPage(language: language, currentquestion: currentQuestionNum)
-        }
+            }
+        //        }
+            .sheet(isPresented: $isHintGiven) {
+                HintsPage(language: language, currentquestion: currentQuestionNum)
+            }
     }
 }
 
 struct toggleButton: View {
-    var next: Bool //True for next button, false for back button
-    @State var language: Bool
+    var type: String
     
     var body: some View {
         HStack {
-            if language {
-                Text(next ? "下一题" : "返回")
-            } else {
-                Text(next ? "Next" : "Back")
-            }
-            Image(systemName: next ? "arrowtriangle.right.fill": "arrowtriangle.left.fill")
+            Text(type)
+            Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
         }
         .padding()
         .background(Color.darkTeal)
