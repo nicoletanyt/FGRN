@@ -37,7 +37,7 @@ struct WelcomePage: View {
                         }
                     
                     NavigationLink {
-                        TutorialPage()
+                        TutorialPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }
