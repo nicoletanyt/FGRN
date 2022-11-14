@@ -18,6 +18,9 @@
 		A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556467290CB6A0007F3AC6 /* Colors.swift */; };
 		A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */; };
 		A255646C290CC169007F3AC6 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255646B290CC169007F3AC6 /* Questions.swift */; };
+		A26BB841292209E9006C5070 /* PastInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB840292209E9006C5070 /* PastInputPage.swift */; };
+		A26BB84329220A59006C5070 /* InputDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB84229220A59006C5070 /* InputDataStore.swift */; };
+		A26BB84529220A5E006C5070 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB84429220A5E006C5070 /* FileManager.swift */; };
 		A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CA29038F45000201FD /* FGRNApp.swift */; };
 		A2D075CD29038F45000201FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D075CC29038F45000201FD /* ContentView.swift */; };
 		A2D075CF29038F47000201FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D075CE29038F47000201FD /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		A2556467290CB6A0007F3AC6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInputPage.swift; sourceTree = "<group>"; };
 		A255646B290CC169007F3AC6 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		A26BB840292209E9006C5070 /* PastInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastInputPage.swift; sourceTree = "<group>"; };
+		A26BB84229220A59006C5070 /* InputDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataStore.swift; sourceTree = "<group>"; };
+		A26BB84429220A5E006C5070 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A2D075C729038F45000201FD /* FGRN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FGRN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D075CA29038F45000201FD /* FGRNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FGRNApp.swift; sourceTree = "<group>"; };
 		A2D075CC29038F45000201FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,17 +79,15 @@
 		A2D075C929038F45000201FD /* FGRN */ = {
 			isa = PBXGroup;
 			children = (
-				A255646B290CC169007F3AC6 /* Questions.swift */,
 				5268309C291614220068229A /* Chinese Questions.swift */,
-				A2556467290CB6A0007F3AC6 /* Colors.swift */,
-				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
-				204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */,
-				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
 				A2D075CA29038F45000201FD /* FGRNApp.swift */,
 				A2D075CC29038F45000201FD /* ContentView.swift */,
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
+				A26BB840292209E9006C5070 /* PastInputPage.swift */,
 				A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */,
 				204B7CA1291615F7007BD2F9 /* HintsPage.swift */,
+				A26BB84429220A5E006C5070 /* FileManager.swift */,
+				A26BB84229220A59006C5070 /* InputDataStore.swift */,
 				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
 				204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */,
 				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
@@ -178,9 +182,11 @@
 				5268309D291614220068229A /* Chinese Questions.swift in Sources */,
 				A2D075CD29038F45000201FD /* ContentView.swift in Sources */,
 				A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */,
+				A26BB841292209E9006C5070 /* PastInputPage.swift in Sources */,
 				A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */,
 				A255646C290CC169007F3AC6 /* Questions.swift in Sources */,
 				A2D075CB29038F45000201FD /* FGRNApp.swift in Sources */,
+				A26BB84529220A5E006C5070 /* FileManager.swift in Sources */,
 				204B7CA2291615F7007BD2F9 /* HintsPage.swift in Sources */,
 				204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */,
 				A2556466290CB5A5007F3AC6 /* WelcomePage.swift in Sources */,
@@ -188,6 +194,7 @@
 				200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */,
 				200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */,
 				204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */,
+				A26BB84329220A59006C5070 /* InputDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,11 @@ struct WelcomePage: View {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }
                     NavigationLink {
+                        PastInputPage()
+                    } label: {
+                        ButtonDisplay(text: languageToggle ? "历史" : "History")
+                    }
+                    NavigationLink {
                         CreditsPage()
                     } label: {
                         ButtonDisplay(text: languageToggle ? "信用" : "Credits")
