@@ -18,7 +18,7 @@ struct EnterInputPage: View {
     @State var isHintGiven = false
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 Text(question.question)
                     .foregroundColor(Color.textColor)
@@ -67,12 +67,13 @@ struct EnterInputPage: View {
                             // do something
                         } label: {
                             Image(systemName: "questionmark")
-                                .padding()
+                                .padding(10)
                                 .background(Color.darkTeal)
                                 .foregroundColor(Color.white)
                                 .cornerRadius(50)
                         }
                     }
+
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
                             Button {
@@ -155,7 +156,7 @@ struct EnterInputPage: View {
                         }
                     }
                 }
-            //        }
+//                    }
                 .sheet(isPresented: $isHintGiven) {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
                 }
@@ -176,7 +177,7 @@ struct EnterInputPage: View {
             .cornerRadius(15)
         }
     }
-}
+//}
 //
 //struct EnterInputPage_Previews: PreviewProvider {
 //    static var previews: some View {

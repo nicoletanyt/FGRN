@@ -100,7 +100,7 @@ struct DisplayInfoPage: View {
             }
 
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                         .foregroundColor(.textColor)
                 }

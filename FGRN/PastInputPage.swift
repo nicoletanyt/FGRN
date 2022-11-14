@@ -18,10 +18,22 @@ struct PastInputPage: View {
                     Text("Recent")
                 }
             }
+            .onDelete { indexSet in
+                    inputManager.inputs.remove(atOffsets: indexSet)
+            }
+            .onMove { oldOffset, newOffset in
+                inputManager.inputs.move(fromOffsets: oldOffset, toOffset: newOffset)
+            }
         }
         .navigationTitle("Email History")
         .onAppear {
             inputManager.loadInput()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+                    .foregroundColor(.textColor)
+            }
         }
     }
 }
