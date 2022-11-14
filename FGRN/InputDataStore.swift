@@ -8,7 +8,7 @@
 import Foundation
 
 class InputDataStore: ObservableObject {
-    @Published var inputs: [[Question]] = [[]]
+    @Published var inputs: [UserInput] = []
     
     let fileName = "Input.json"
     
@@ -18,13 +18,13 @@ class InputDataStore: ObservableObject {
         }
     }
     
-    func addInput(_ input: [Question]) {
+    func addInput(_ input: UserInput) {
         inputs.append(input)
         saveInput()
     }
     
-    func updateInput(_ input: [Question]) {
-        guard let index = inputs.firstIndex(where: { $0[0].id == input[0].id}) else { return }
+    func updateInput(_ input: UserInput) {
+        guard let index = inputs.firstIndex(where: { $0.id == input.id}) else { return }
         inputs[index] = input
         saveInput()
     }
@@ -40,7 +40,7 @@ class InputDataStore: ObservableObject {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    inputs = try decoder.decode([[Question]].self, from: data)
+                    inputs = try decoder.decode([UserInput].self, from: data)
                 } catch {
                     print(error.localizedDescription)
                 }

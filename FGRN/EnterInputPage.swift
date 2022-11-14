@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EnterInputPage: View {
+    @EnvironmentObject var inputManager: InputDataStore
     @State var question: Question
     @State var questionsArray: [Question]
     @State var currentQuestionNum: Int
@@ -15,6 +16,7 @@ struct EnterInputPage: View {
     @State var language: Bool //true for chinese, false for english
     
     @State var isHintGiven = false
+    @State var currentInputs: UserInput = UserInput(inputQuestion: ["": ""])
     
     var body: some View {
         //        NavigationView {
@@ -88,15 +90,20 @@ struct EnterInputPage: View {
                             }
                         }
                         Spacer()
-                        if currentQuestionNum == arrayOfQuestions.count - 1 {
+                        if currentQuestionNum == questionsArray.count - 1 {
                             NavigationLink {
                                 DisplayInfoPage()
                             } label: {
                                 toggleButton(type: language ? "制造" : "Generate")
                             }
+                            .onAppear {
+                                for i in 0..<questionsArray.count {
+                                    currentInputs.inputQuestion[questionsArray[i].question] = questionsArray[i].input
+                                }
+                                inputManager.addInput(currentInputs) //saves the input
+                            }
                         } else {
                             Button {
-                                
                                 //Toggle next question
                                 if currentQuestionNum < questionsArray.count - 1{
                                     questionsArray[currentQuestionNum] = question //saves the question

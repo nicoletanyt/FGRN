@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct PastInputPage: View {
-    @EnvironmentObject var 
+    @EnvironmentObject var inputManager: InputDataStore
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(inputManager.inputs) { userInputStruct in
+                ForEach(userInputStruct.inputQuestion.sorted(by: >), id: \.key) { question, answer in
+                    Text(question + answer)
+                }
+            }
+        }
+        
+        .onAppear {
+            inputManager.loadInput()
+            print(inputManager.inputs)
+        }
     }
 }
 
