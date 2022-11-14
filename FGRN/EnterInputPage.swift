@@ -73,6 +73,7 @@ struct EnterInputPage: View {
                         }
                     }
                     ToolbarItem(placement: .bottomBar) {
+                        
                         HStack {
                             Button {
                                 //Toggle previous question
@@ -88,7 +89,10 @@ struct EnterInputPage: View {
                                 }
                             }
                             Spacer()
+                            
+                            
                             Button {
+                                
                                 //Toggle next question
                                 if currentQuestionNum < questionsArray.count - 1{
                                     questionsArray[currentQuestionNum] = question //saves the question
@@ -115,8 +119,8 @@ struct EnterInputPage: View {
                                         questionsArray[4].options[5] = "你好" + questionsArray[currentQuestionNum - 1].input
                                         questionsArray[4].options[4] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
                                         chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
-//                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
-//                                        questionsArray[15].options[1] = chineseGreetingFills[1]
+                                        //                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
+                                        //                                        questionsArray[15].options[1] = chineseGreetingFills[1]
                                     } else {
                                         questionsArray[4].options[0] = "Dear " + questionsArray[currentQuestionNum - 1].input
                                         questionsArray[4].options[3] = "Greetings " + questionsArray[currentQuestionNum - 1].input
@@ -137,7 +141,9 @@ struct EnterInputPage: View {
                             } label: {
                                 toggleButton(next: true, language: language)
                             }
+                            
                         }
+                        
                     }
                 }
         }
