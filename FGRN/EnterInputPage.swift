@@ -24,7 +24,7 @@ struct EnterInputPage: View {
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
                 if question.options != [] {
-                    Picker (selection: $question.input) {
+                    Picker(selection: $question.input) {
                         ForEach(question.options, id: \.self) { option in
                             Text(option)
                                 .tag(option)
