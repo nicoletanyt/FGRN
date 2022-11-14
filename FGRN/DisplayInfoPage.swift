@@ -9,30 +9,31 @@ import SwiftUI
 
 struct DisplayInfoPage: View {
     
-    @State var questions = arrayOfQuestions
+//    @State var question: Question
+    @State var questionsArray: [Question]
     @State var isSheetGive = false
     
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
-        UIScrollView.appearance().backgroundColor = .white
-    }
+//    init() {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
+//        UIScrollView.appearance().backgroundColor = .white
+//    }
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             List {
                 Section(header: Text("Basic Info")) {
-                    ForEach(0..<3) { question1 in
+                    ForEach(0..<4) { question1 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question1])
+                            InfoDetailView(question: $questionsArray[question1])
                         } label: {
-                            Text(questions[question1].input)
+                            Text(questionsArray[question1].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questions.remove(atOffsets: indexSet)
+                        questionsArray.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questions.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.darkTeal)
@@ -40,18 +41,18 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Greeting")) {
-                    ForEach(4..<5) { question2 in
+                    ForEach(4..<6) { question2 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question2])
+                            InfoDetailView(question: $questionsArray[question2])
                         } label: {
-                            Text(questions[question2].input)
+                            Text(questionsArray[question2].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questions.remove(atOffsets: indexSet)
+                        questionsArray.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questions.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.darkTeal)
@@ -59,18 +60,18 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Content")) {
-                    ForEach(6..<13) { question3 in
+                    ForEach(6..<14) { question3 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question3])
+                            InfoDetailView(question: $questionsArray[question3])
                         } label: {
-                            Text(questions[question3].input)
+                            Text(questionsArray[question3].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questions.remove(atOffsets: indexSet)
+                        questionsArray.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questions.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.darkTeal)
@@ -78,18 +79,18 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
                 
                 Section(header: Text("Closing")) {
-                    ForEach(14..<15) { question4 in
+                    ForEach(14..<16) { question4 in
                         NavigationLink {
-                            InfoDetailView(question: $questions[question4])
+                            InfoDetailView(question: $questionsArray[question4])
                         } label: {
-                            Text(questions[question4].input)
+                            Text(questionsArray[question4].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questions.remove(atOffsets: indexSet)
+                        questionsArray.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questions.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.darkTeal)
@@ -97,7 +98,6 @@ struct DisplayInfoPage: View {
                 .headerProminence(.increased)
             }
             .listStyle(.sidebar)
-            .navigationTitle("Your Final Info")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
@@ -113,15 +113,15 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-        }
+//        }
         .sheet(isPresented: $isSheetGive) {
-            NewInfoSheet(questions: $questions)
+            NewInfoSheet(questions: $questionsArray)
         }
     }
 }
 
-struct DisplayInfoPage_Previews: PreviewProvider {
-    static var previews: some View {
-        DisplayInfoPage()
-    }
-}
+//struct DisplayInfoPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DisplayInfoPage()
+//    }
+//}
