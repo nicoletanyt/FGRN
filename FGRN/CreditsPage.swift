@@ -9,7 +9,22 @@ import SwiftUI
 
 struct CreditsPage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(systemName: "command.circle.fill")
+                     .imageScale(.large)
+                     .foregroundColor(Color.lightBlue)
+                     .font(.system(size: 24, design: .monospaced))
+                     .padding()
+                 Text("Developed By Four-Grand-Rush-Nights")
+            .foregroundColor(Color.lightBlue)
+                     .bold()
+                     .font(.system(size: 24, design: .monospaced))
+                     .padding()
+                 
+
+                 Text("\"Please don't steal my kids again.\"")
+            .foregroundColor(Color.lightBlue)
+                     .bold()
+                     .padding()
     }
 }
 
