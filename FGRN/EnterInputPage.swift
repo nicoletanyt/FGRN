@@ -20,7 +20,7 @@ struct EnterInputPage: View {
         NavigationView {
             VStack {
                 Text(question.question)
-                    .foregroundColor(Color.darkTeal)
+                    .foregroundColor(Color.textColor)
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
                 if question.options != [] {
@@ -37,7 +37,7 @@ struct EnterInputPage: View {
                     .pickerStyle(.menu)
                     
                 } else {
-                    TextField(language ? "输入您的输入" : "Enter Your Input", text: $question.input)
+                    TextField(language ? "输入" : "Enter Your Input", text: $question.input)
                         .font(.system(size: 25))
                         .foregroundColor(Color.lightBlue)
                         .textInputAutocapitalization(.never)
