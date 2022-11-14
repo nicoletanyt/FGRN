@@ -80,7 +80,7 @@ struct EnterInputPage: View {
                                     questionsArray[currentQuestionNum] = question //saves the question
                                     currentQuestionNum -= 1
                                     question = questionsArray[currentQuestionNum]
-                                    currentProgress -= 1/15
+                                    currentProgress -= 1/16
                                 }
                             } label: {
                                 if currentQuestionNum != 0 {
@@ -94,7 +94,7 @@ struct EnterInputPage: View {
                                     questionsArray[currentQuestionNum] = question //saves the question
                                     currentQuestionNum += 1
                                     question = questionsArray[currentQuestionNum]
-                                    currentProgress += 1/15 //15 is the number of questions in the array
+                                    currentProgress += 1/16 //15 is the number of questions in the array
                                 }
                                 if currentQuestionNum - 1 == 0 {
                                     //question about time
@@ -115,8 +115,8 @@ struct EnterInputPage: View {
                                         questionsArray[4].options[5] = "你好" + questionsArray[currentQuestionNum - 1].input
                                         questionsArray[4].options[4] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
                                         chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
-                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
-                                        questionsArray[15].options[1] = chineseGreetingFills[1]
+//                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
+//                                        questionsArray[15].options[1] = chineseGreetingFills[1]
                                     } else {
                                         questionsArray[4].options[0] = "Dear " + questionsArray[currentQuestionNum - 1].input
                                         questionsArray[4].options[3] = "Greetings " + questionsArray[currentQuestionNum - 1].input
