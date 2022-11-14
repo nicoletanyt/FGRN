@@ -12,10 +12,10 @@ struct HintsPage: View {
     
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        if $currentquestion.count == 15 {
-            Text("hello")
-        } else {
-            Text("help")
+        if currentquestion == 0 {
+            Text("This is a polite greeting depending on the time of day")
+        } else if currentquestion == 1 {
+            Text("You can enter their name, surname or title (Ms., Mr.)")
         }
         
     }

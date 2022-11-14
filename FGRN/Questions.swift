@@ -23,15 +23,19 @@ var arrayOfQuestions: [Question] = [
     Question(question: "Enter the recipient's name.", input: ""),
     Question(question: "Enter the recipent's job.", input: ""),
     Question(question: "What is your subject?", input: ""),
+    
     Question(question: "Greeting", input: "", options: ["dear [name]", "dear [job]", "To whom it may concern", "greetings [name]", "Good [morning / afternoon / evening / day] [name]", "hi [name]"]),
-    Question(question: "What is the purpose of your email?", input: ""),
-    Question(question: "Point 1", input: ""),
     Question(question: "Action word", input: "", options: ["inform", "ask", "inquire", "advocate", "propose"]),
-    Question(question: "Question 1", input: ""),
+    
+    Question(question: "What is the purpose of your email?", input: ""),
+    Question(question: "Point", input: ""),
+    Question(question: "Question", input: ""),
     Question(question: "Context?", input: ""),
     Question(question: "Info 1", input: ""),
     Question(question: "Info 2", input: ""),
     Question(question: "Culture", input: ""),
-    Question(question: "Senstive issues of the audience", input: ""),
-    Question(question: "Closing", input: "", options: ["regards", "best regards", "yours sincerely", "yours faithfully", "thanks", "thank you", "thanks in advance", "cheers"])
+    Question(question: "Sensitive issues of the audience", input: ""),
+    
+    Question(question: "Closing", input: "", options: ["regards", "best regards", "yours sincerely", "yours faithfully", "thanks", "thank you", "thanks in advance", "cheers"]),
+    Question(question: "What is your name / title?", input: ""),
 ]
