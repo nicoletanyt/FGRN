@@ -20,9 +20,3 @@ struct InfoDetailView: View {
         }
     }
 }
-
-struct InfoDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoDetailView(question: .constant(Question(question: "he", input: "lp", questionNumber: 1)))
-    }
-}

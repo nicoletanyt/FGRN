@@ -20,7 +20,7 @@ struct NewInfoSheet: View {
                 .disableAutocorrection(true)
             Button("save info") {
                 // "do something" code to save the todo
-                let info = Question(question: "1", input: infos, questionNumber: 1)
+                let info = Question(question: "1", input: infos)
                 questions.append(info)
                 dismiss()
             }

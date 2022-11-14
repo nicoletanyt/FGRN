@@ -13,10 +13,13 @@ struct EnterInputPage: View {
     @State var currentProgress: CGFloat = 0.0
     
     @State var language = WelcomePage().languageToggle
+    
+    @State var isHintGiven = false
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text(question.question ?? "")
+                Text(question.question)
                     .foregroundColor(Color.darkTeal)
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
@@ -58,11 +61,16 @@ struct EnterInputPage: View {
                         .padding()
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Image(systemName: "questionmark")
-                            .padding()
-                            .background(Color.darkTeal)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(50)
+                        Button {
+                            isHintGiven = true
+                            // do something
+                        } label: {
+                            Image(systemName: "questionmark")
+                                .padding()
+                                .background(Color.darkTeal)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(50)
+                        }
                     }
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
@@ -115,6 +123,9 @@ struct EnterInputPage: View {
                         }
                     }
                 }
+        }
+        .sheet(isPresented: $isHintGiven) {
+            HintsPage(currentquestion: currentQuestionNum)
         }
     }
 }

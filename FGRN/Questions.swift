@@ -22,7 +22,6 @@ var arrayOfQuestions: [Question] = [
     Question(question: "When do you want to send your email?", input: "", options: ["Morning", "Afternoon", "Evening", "Day"]),
     Question(question: "Enter the recipient's name.", input: ""),
     Question(question: "Enter the recipent's job.", input: ""),
-    
     Question(question: "What is your subject?", input: ""),
     Question(question: "Greeting", input: "", options: ["dear [name]", "dear [job]", "To whom it may concern", "greetings [name]", "Good [morning / afternoon / evening / day] [name]", "hi [name]"]),
     Question(question: "What is the purpose of your email?", input: ""),
