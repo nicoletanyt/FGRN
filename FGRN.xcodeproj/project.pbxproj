@@ -79,7 +79,6 @@
 		A2D075C929038F45000201FD /* FGRN */ = {
 			isa = PBXGroup;
 			children = (
-				5268309C291614220068229A /* Chinese Questions.swift */,
 				A2D075CA29038F45000201FD /* FGRNApp.swift */,
 				A2D075CC29038F45000201FD /* ContentView.swift */,
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
@@ -93,6 +92,7 @@
 				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
 				200F5BB1290CB94E003FEA6F /* TutorialPage.swift */,
 				200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */,
+				5268309C291614220068229A /* Chinese Questions.swift */,
 				A255646B290CC169007F3AC6 /* Questions.swift */,
 				A2556467290CB6A0007F3AC6 /* Colors.swift */,
 				A2D075CE29038F47000201FD /* Assets.xcassets */,
