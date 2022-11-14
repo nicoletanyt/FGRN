@@ -11,6 +11,10 @@ struct PastInputPage: View {
     @State var language: Bool
     @EnvironmentObject var inputManager: InputDataStore
     var body: some View {
+        Text(language ? "电子邮件历史。" : "Email History.")
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .padding()
         List {
             ForEach(inputManager.inputs, id: \.self) { inputStruct in
                 NavigationLink {
@@ -20,8 +24,7 @@ struct PastInputPage: View {
                 }
             }
         }
-        .navigationTitle("Email History")
-        
+
         .onAppear {
             inputManager.loadInput()
         }

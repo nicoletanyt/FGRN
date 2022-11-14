@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomePage: View {
     init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(Color.navColor)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
     }
     
     @State var languageToggle = false
