@@ -21,6 +21,7 @@ struct PastInputPage: View {
             }
         }
         .navigationTitle("Email History")
+        
         .onAppear {
             inputManager.loadInput()
         }

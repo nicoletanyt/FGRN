@@ -13,6 +13,8 @@ extension Color {
     static let lightBlue: Color = .init("lightBlue")
     static let lightTeal: Color = .init("lightTeal")
     static let textColor: Color = .init("textColor")
+    static let navColor: Color = .init("navigationColor")
+
 
 }
 
