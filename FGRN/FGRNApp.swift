@@ -12,6 +12,7 @@ struct FGRNApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(InputDataStore())
         }
     }
 }
