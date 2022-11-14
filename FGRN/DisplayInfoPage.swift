@@ -12,7 +12,7 @@ struct DisplayInfoPage: View {
 //    @State var question: Question
     @State var questionsArray: [Question]
     @State var isSheetGive = false
-    
+    @State var language: Bool
 //    init() {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
 //        UIScrollView.appearance().backgroundColor = .white
@@ -21,7 +21,7 @@ struct DisplayInfoPage: View {
     var body: some View {
 //        NavigationView {
             List {
-                Section(header: Text("Basic Info")) {
+                Section(header: Text(language ? "基本信息" : "Basic Info")) {
                     ForEach(0..<4) { question1 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question1])
@@ -39,7 +39,7 @@ struct DisplayInfoPage: View {
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
 
-                Section(header: Text("Greeting")) {
+                Section(header: Text(language ? "问候语" : "Greeting")) {
                     ForEach(4..<6) { question2 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question2])
@@ -57,7 +57,7 @@ struct DisplayInfoPage: View {
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
 
-                Section(header: Text("Content")) {
+                Section(header: Text(language ? "内容" : "Content")) {
                     ForEach(6..<14) { question3 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question3])
@@ -75,7 +75,7 @@ struct DisplayInfoPage: View {
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 
-                Section(header: Text("Closing")) {
+                Section(header: Text(language ? "闭幕" : "Closing")) {
                     ForEach(14..<16) { question4 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question4])

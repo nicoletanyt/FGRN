@@ -19,8 +19,8 @@ struct NewInfoSheet: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
             Button("save info") {
-                questions.append(Question(question: "", input: infos))
-                dismiss()
+//                questions.append(Question(question: "", input: infos))
+//                dismiss()
             }
         }
     }
