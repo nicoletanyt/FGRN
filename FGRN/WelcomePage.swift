@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomePage: View {
     init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(Color.navColor)]
     }
     
     @State var languageToggle = false
@@ -42,7 +42,7 @@ struct WelcomePage: View {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }
                     NavigationLink {
-                        PastInputPage()
+                        PastInputPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "历史" : "History")
                     }
@@ -59,7 +59,7 @@ struct WelcomePage: View {
                             .padding(20)
                     }
                 }
-                .navigationTitle("Homepage")
+                .navigationTitle(languageToggle ? "主页" : "Homepage")
                 .navigationBarTitleDisplayMode(.inline)
             }
             .ignoresSafeArea(.all)
