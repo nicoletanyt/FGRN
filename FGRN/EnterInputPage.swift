@@ -142,7 +142,7 @@ struct EnterInputPage: View {
                 }
         }
         .sheet(isPresented: $isHintGiven) {
-            HintsPage(currentquestion: currentQuestionNum)
+            HintsPage(language: language, currentquestion: currentQuestionNum)
         }
     }
 }
