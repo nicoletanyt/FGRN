@@ -36,7 +36,7 @@ struct DisplayInfoPage: View {
                         questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
-                .foregroundColor(.darkTeal)
+                .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 .headerProminence(.increased)
                 
@@ -55,7 +55,7 @@ struct DisplayInfoPage: View {
                         questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
-                .foregroundColor(.darkTeal)
+                .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 .headerProminence(.increased)
                 
@@ -74,7 +74,7 @@ struct DisplayInfoPage: View {
                         questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
-                .foregroundColor(.darkTeal)
+                .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 .headerProminence(.increased)
                 
@@ -93,7 +93,7 @@ struct DisplayInfoPage: View {
                         questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
-                .foregroundColor(.darkTeal)
+                .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 .headerProminence(.increased)
             }
@@ -101,7 +101,7 @@ struct DisplayInfoPage: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
-                        .foregroundColor(.darkTeal)
+                        .foregroundColor(.textColor)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -109,7 +109,7 @@ struct DisplayInfoPage: View {
                         isSheetGive = true
                     } label: {
                         Image(systemName: "plus")
-                            .foregroundColor(.darkTeal)
+                            .foregroundColor(.textColor)
                     }
                 }
             }
