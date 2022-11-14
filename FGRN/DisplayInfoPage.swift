@@ -38,8 +38,7 @@ struct DisplayInfoPage: View {
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                .headerProminence(.increased)
-                
+
                 Section(header: Text("Greeting")) {
                     ForEach(4..<6) { question2 in
                         NavigationLink {
@@ -57,8 +56,7 @@ struct DisplayInfoPage: View {
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                .headerProminence(.increased)
-                
+
                 Section(header: Text("Content")) {
                     ForEach(6..<14) { question3 in
                         NavigationLink {
@@ -76,7 +74,6 @@ struct DisplayInfoPage: View {
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                .headerProminence(.increased)
                 
                 Section(header: Text("Closing")) {
                     ForEach(14..<16) { question4 in
@@ -95,9 +92,13 @@ struct DisplayInfoPage: View {
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                .headerProminence(.increased)
+                
+//                List(questionsArray) { killme in
+//                        Text(killme.question)
+//                    }
+//                }
             }
-            .listStyle(.sidebar)
+
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
@@ -119,9 +120,3 @@ struct DisplayInfoPage: View {
         }
     }
 }
-
-//struct DisplayInfoPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DisplayInfoPage()
-//    }
-//}

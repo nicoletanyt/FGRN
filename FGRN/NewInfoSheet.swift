@@ -19,9 +19,7 @@ struct NewInfoSheet: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
             Button("save info") {
-                // "do something" code to save the todo
-                let info = Question(question: "", input: infos)
-                questions.append(info)
+                questions.append(Question(question: "", input: infos))
                 dismiss()
             }
         }
