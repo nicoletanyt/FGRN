@@ -12,7 +12,7 @@ struct HintsPage: View {
     
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        if $currentquestion.count == 15 {
+        if currentquestion == 15 {
             Text("hello")
         } else {
             Text("help")

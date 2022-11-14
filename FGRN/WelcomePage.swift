@@ -28,7 +28,7 @@ struct WelcomePage: View {
                         .foregroundColor(.white)
                         .frame(width: 300, height: 100)
                     NavigationLink {
-                        EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
+                        EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "写电邮" : "Email Generating")
                         }
