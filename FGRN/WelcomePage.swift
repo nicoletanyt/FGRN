@@ -28,7 +28,7 @@ struct WelcomePage: View {
                         .foregroundColor(.white)
                         .frame(width: 300, height: 100)
                     NavigationLink {
-                        EnterInputPage(question: arrayOfQuestions[0], currentQuestionNum: 0)
+                        EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "写电邮" : "Email Generating")
                         }
@@ -36,12 +36,13 @@ struct WelcomePage: View {
                     NavigationLink {
                         TutorialPage()
                     } label: {
-                        ButtonDisplay(text: "Tutorial")
+                        ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }
                     NavigationLink {
                         CreditsPage()
                     } label: {
-                        Text("Credits")
+                        ButtonDisplay(text: languageToggle ? "信用" : "Credits")
+
                             .font(.system(size: 30))
                             .foregroundColor(Color.darkTeal)
                             .frame(width: 300, height: 50)
