@@ -8,9 +8,9 @@
 import Foundation
 
 class InputDataStore: ObservableObject {
-    @Published var inputs: [[Question]] = [[]]
+    @Published var inputs: [[Question]] = []
     
-    let fileName = "Input.json"
+    let fileName = "Inputs.json"
     
     init() {
         if FileManager().docExist(named: fileName) {
@@ -22,12 +22,12 @@ class InputDataStore: ObservableObject {
         inputs.append(input)
         saveInput()
     }
-    
-    func updateInput(_ input: [Question]) {
-        guard let index = inputs.firstIndex(where: { $0[0].id == input[0].id}) else { return }
-        inputs[index] = input
-        saveInput()
-    }
+//
+//    func updateInput(_ input: Question) {
+//        guard let index = inputs.firstIndex(where: { $0.id == input.id}) else { return }
+//        inputs[index] = input
+//        saveInput()
+//    }
     
     func deleteInput(at indexSet: IndexSet) {
         inputs.remove(atOffsets: indexSet)
@@ -42,7 +42,7 @@ class InputDataStore: ObservableObject {
                 do {
                     inputs = try decoder.decode([[Question]].self, from: data)
                 } catch {
-                    print(error.localizedDescription)
+                    print("Loading Input Error: " + error.localizedDescription)
                 }
             case .failure(let error):
                 print(error.localizedDescription)

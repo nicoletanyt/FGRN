@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Question: Identifiable, Codable {
+struct Question: Identifiable, Codable, Hashable {
     var id = UUID()
     
     var question: String
