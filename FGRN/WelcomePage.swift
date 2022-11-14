@@ -36,12 +36,13 @@ struct WelcomePage: View {
                     NavigationLink {
                         TutorialPage()
                     } label: {
-                        ButtonDisplay(text: "Tutorial")
+                        ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }
                     NavigationLink {
                         CreditsPage()
                     } label: {
-                        Text("Credits")
+                        ButtonDisplay(text: languageToggle ? "信用" : "Credits")
+
                             .font(.system(size: 30))
                             .foregroundColor(Color.darkTeal)
                             .frame(width: 300, height: 50)
