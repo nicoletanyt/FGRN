@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EnterInputPage: View {
+    @EnvironmentObject var inputManager: InputDataStore
     @State var question: Question
     @State var questionsArray: [Question]
     @State var currentQuestionNum: Int
@@ -93,6 +94,9 @@ struct EnterInputPage: View {
                                     DisplayInfoPage(questionsArray: questionsArray)
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
+                                }
+                                .onAppear {
+                                    inputManager.addInput(questionsArray) //saves the input
                                 }
                             } else {
                                 Button {

@@ -26,7 +26,7 @@ struct WelcomePage: View {
                         .mask {
                             Circle()
                         }
-                    Toggle(languageToggle ? "Change Chinese to English" : "Change English to Chinese", isOn: $languageToggle)
+                    Toggle(languageToggle ? "把中文改成英文" : "Change English to Chinese", isOn: $languageToggle)
 //                        .padding()
                         .foregroundColor(.white)
                         .frame(width: 300, height: 100)
@@ -37,7 +37,7 @@ struct WelcomePage: View {
                         }
                     
                     NavigationLink {
-                        TutorialPage()
+                        TutorialPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
                     }

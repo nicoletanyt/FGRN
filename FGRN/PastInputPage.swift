@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct PastInputPage: View {
+    @EnvironmentObject var inputManager: InputDataStore
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(inputManager.inputs, id: \.self) { inputStruct in
+                NavigationLink {
+                    DisplayInfoPage(questionsArray: inputStruct)
+                } label: {
+                    Text("Recent")
+                }
+            }
+        }
+        .navigationTitle("Email History")
+        .onAppear {
+            inputManager.loadInput()
+        }
     }
 }
 
