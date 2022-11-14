@@ -19,164 +19,166 @@ struct EnterInputPage: View {
     @State var currentInputs: UserInput = UserInput(inputQuestion: ["": ""])
     
     var body: some View {
-        //        NavigationView {
-        VStack {
-            Text(question.question)
-                .foregroundColor(Color.textColor)
-                .font(.system(.largeTitle))
-                .padding(.bottom, 200)
-            if question.options != [] {
-                Picker (selection: $question.input) {
-                    ForEach(question.options, id: \.self) { option in
-                        Text(option)
-                            .tag(option)
-                            .foregroundColor(Color.lightBlue)
-                            .font(.system(size: 25))
-                    }
-                } label: {
-                    Text("Picker")
-                }
-                .pickerStyle(.menu)
-                
-            } else {
-                TextField(language ? "输入" : "Enter Your Input", text: $question.input)
-                    .font(.system(size: 25))
-                    .foregroundColor(Color.lightBlue)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-            }
-            Divider()
-                .frame(height: 4)
-                .background(Color.lightBlue)
-        }         .padding(.horizontal, 50)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ZStack (alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(Color.darkTeal)
-                            .frame(width: 300, height: 30)
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color.white)
-                            .frame(width: 300 * currentProgress, height: 15)
-                            .padding(.horizontal, 10)
-                    }
-                    .padding()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isHintGiven = true
-                        // do something
-                    } label: {
-                        Image(systemName: "questionmark")
-                            .padding()
-                            .background(Color.darkTeal)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(50)
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Button {
-                            //Toggle previous question
-                            if currentQuestionNum > 0 {
-                                questionsArray[currentQuestionNum] = question //saves the question
-                                currentQuestionNum -= 1
-                                question = questionsArray[currentQuestionNum]
-                                currentProgress -= 1/16
-                            }
-                        } label: {
-                            if currentQuestionNum != 0 {
-                                toggleButton(type: language ? "返回" : "Back")
-                            }
+        NavigationView {
+            VStack {
+                Text(question.question)
+                    .foregroundColor(Color.textColor)
+                    .font(.system(.largeTitle))
+                    .padding(.bottom, 200)
+                if question.options != [] {
+                    Picker(selection: $question.input) {
+                        ForEach(question.options, id: \.self) { option in
+                            Text(option)
+                                .tag(option)
+                                .foregroundColor(Color.lightBlue)
+                                .font(.system(size: 25))
                         }
-                        Spacer()
-                        if currentQuestionNum == questionsArray.count - 1 {
-                            NavigationLink {
-                                DisplayInfoPage()
-                            } label: {
-                                toggleButton(type: language ? "制造" : "Generate")
-                            }
-                            .onAppear {
-                                for i in 0..<questionsArray.count {
-                                    currentInputs.inputQuestion[questionsArray[i].question] = questionsArray[i].input
-                                }
-                                inputManager.addInput(currentInputs) //saves the input
-                            }
-                        } else {
+                    } label: {
+                        Text("Picker")
+                    }
+                    .pickerStyle(.menu)
+                    
+                } else {
+                    TextField(language ? "输入" : "Enter Your Input", text: $question.input)
+                        .font(.system(size: 25))
+                        .foregroundColor(Color.lightBlue)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                }
+                Divider()
+                    .frame(height: 4)
+                    .background(Color.lightBlue)
+            }         .padding(.horizontal, 50)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        ZStack (alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(Color.darkTeal)
+                                .frame(width: 300, height: 30)
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.white)
+                                .frame(width: 300 * currentProgress, height: 15)
+                                .padding(.horizontal, 10)
+                        }
+                        .padding()
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            isHintGiven = true
+                            // do something
+                        } label: {
+                            Image(systemName: "questionmark")
+                                .padding()
+                                .background(Color.darkTeal)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(50)
+                        }
+                    }
+                    ToolbarItem(placement: .bottomBar) {
+                        HStack {
                             Button {
-                                //Toggle next question
-                                if currentQuestionNum < questionsArray.count - 1{
+                                //Toggle previous question
+                                if currentQuestionNum > 0 {
                                     questionsArray[currentQuestionNum] = question //saves the question
-                                    currentQuestionNum += 1
+                                    currentQuestionNum -= 1
                                     question = questionsArray[currentQuestionNum]
-                                    currentProgress += 1/16 //15 is the number of questions in the array
+                                    currentProgress -= 1/16
                                 }
-                                if currentQuestionNum - 1 == 0 {
-                                    //question about time
-                                    if questionsArray[currentQuestionNum - 1].input != "" {
-                                        //changes only if the input is changed, otherwise it'll give the default "day"
-                                        if language {
-                                            chineseGreetingFills[0] = questionsArray[currentQuestionNum - 1].input
-                                        } else {
-                                            greetingFills[0] = questionsArray[currentQuestionNum - 1].input
+                            } label: {
+                                if currentQuestionNum != 0 {
+                                    toggleButton(type: language ? "返回" : "Back")
+                                }
+                            }
+                            Spacer()
+                            if currentQuestionNum == arrayOfQuestions.count - 1 {
+                                NavigationLink {
+                                    DisplayInfoPage(questionsArray: questionsArray)
+                                } label: {
+                                    toggleButton(type: language ? "制造" : "Generate")
+                                }
+                                .onAppear {
+                                    for i in 0..<questionsArray.count {
+                                        currentInputs.inputQuestion[questionsArray[i].question] = questionsArray[i].input
+                                    }
+                                    inputManager.addInput(currentInputs) //saves the input
+                                }
+                            } else {
+                                Button {
+                                    
+                                    //Toggle next question
+                                    if currentQuestionNum < questionsArray.count - 1{
+                                        questionsArray[currentQuestionNum] = question //saves the question
+                                        currentQuestionNum += 1
+                                        question = questionsArray[currentQuestionNum]
+                                        currentProgress += 1/16 //15 is the number of questions in the array
+                                    }
+                                    if currentQuestionNum - 1 == 0 {
+                                        //question about time
+                                        if questionsArray[currentQuestionNum - 1].input != "" {
+                                            //changes only if the input is changed, otherwise it'll give the default "day"
+                                            if language {
+                                                chineseGreetingFills[0] = questionsArray[currentQuestionNum - 1].input
+                                            } else {
+                                                greetingFills[0] = questionsArray[currentQuestionNum - 1].input
+                                            }
                                         }
                                     }
-                                }
-                                if currentQuestionNum - 1 == 1 {
-                                    //currentQuestionNum == 1: second question about name
-                                    if language {
-                                        questionsArray[4].options[0] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[3] = "问候" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[5] = "你好" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[4] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
-                                        chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
-                                        //                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
-                                        //                                        questionsArray[15].options[1] = chineseGreetingFills[1]
-                                    } else {
-                                        questionsArray[4].options[0] = "Dear " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[3] = "Greetings " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[5] = "Hi " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[4] = "Good " + greetingFills[0] + greetingFills[1]
-                                        greetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
+                                    if currentQuestionNum - 1 == 1 {
+                                        //currentQuestionNum == 1: second question about name
+                                        if language {
+                                            questionsArray[4].options[0] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[3] = "问候" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[5] = "你好" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[4] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
+                                            chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
+                                            //                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
+                                            //                                        questionsArray[15].options[1] = chineseGreetingFills[1]
+                                        } else {
+                                            questionsArray[4].options[0] = "Dear " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[3] = "Greetings " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[5] = "Hi " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[4] = "Good " + greetingFills[0] + greetingFills[1]
+                                            greetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
+                                        }
                                     }
-                                }
-                                if currentQuestionNum - 1 == 2 {
-                                    //currentQuestionNum == 2: third question about job of person
-                                    //this code will run when the current question is the next question so currentQuestionNum - 1 gives the answer of the previous question answered
-                                    if language {
-                                        questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
-                                    } else {
-                                        questionsArray[4].options[1] = "Dear " + questionsArray[currentQuestionNum - 1].input
+                                    if currentQuestionNum - 1 == 2 {
+                                        //currentQuestionNum == 2: third question about job of person
+                                        //this code will run when the current question is the next question so currentQuestionNum - 1 gives the answer of the previous question answered
+                                        if language {
+                                            questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
+                                        } else {
+                                            questionsArray[4].options[1] = "Dear " + questionsArray[currentQuestionNum - 1].input
+                                        }
                                     }
+                                } label: {
+                                    toggleButton(type: language ? "下一题" : "Next")
                                 }
-                            } label: {
-                                toggleButton(type: language ? "下一题" : "Next")
+                                
                             }
                             
                         }
-                        
                     }
                 }
-            }
-        //        }
-            .sheet(isPresented: $isHintGiven) {
-                HintsPage(language: language, currentquestion: currentQuestionNum)
-            }
-    }
-}
-
-struct toggleButton: View {
-    var type: String
-    
-    var body: some View {
-        HStack {
-            Text(type)
-            Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
+            //        }
+                .sheet(isPresented: $isHintGiven) {
+                    HintsPage(language: language, currentquestion: currentQuestionNum)
+                }
         }
-        .padding()
-        .background(Color.darkTeal)
-        .foregroundColor(Color.white)
-        .cornerRadius(15)
+    }
+    
+    struct toggleButton: View {
+        var type: String
+        
+        var body: some View {
+            HStack {
+                Text(type)
+                Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
+            }
+            .padding()
+            .background(Color.darkTeal)
+            .foregroundColor(Color.white)
+            .cornerRadius(15)
+        }
     }
 }
 //

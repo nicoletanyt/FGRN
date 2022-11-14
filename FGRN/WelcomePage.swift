@@ -23,6 +23,9 @@ struct WelcomePage: View {
                     Image("APP-LOGO")
                         .resizable()
                         .frame(width: 200, height: 200)
+                        .mask {
+                            Circle()
+                        }
                     Toggle(languageToggle ? "Change Chinese to English" : "Change English to Chinese", isOn: $languageToggle)
 //                        .padding()
                         .foregroundColor(.white)
@@ -50,7 +53,7 @@ struct WelcomePage: View {
 
                             .font(.system(size: 30))
                             .foregroundColor(Color.darkTeal)
-                            .frame(width: 300, height: 50)
+                            .frame(width: 300, height: 40)
                             .background(Color.lightTeal)
                             .cornerRadius(10)
                             .padding(20)
@@ -71,10 +74,9 @@ struct ButtonDisplay: View {
         Text(text)
             .font(.system(size: 30))
             .foregroundColor(Color.white)
-            .frame(width: 300, height: 100)
+            .frame(width: 300, height: 50)
             .background(Color.lightBlue)
             .cornerRadius(10)
-            .padding(20)
     }
 }
 
