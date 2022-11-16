@@ -23,7 +23,7 @@ struct DisplayInfoPage: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-//        NavigationView {
+        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
                     ForEach(0..<4) { question1 in
@@ -108,6 +108,8 @@ struct DisplayInfoPage: View {
                 }
             }
             .interactiveDismissDisabled(!isDone)
+            .navigationBarTitle("Your Final Info")
+
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -123,7 +125,7 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-//        }
+        }
         .sheet(isPresented: $isSheetGive) {
             NewInfoSheet(questions: $questionsArray)
         }

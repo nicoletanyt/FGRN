@@ -19,7 +19,7 @@ struct EnterInputPage: View {
     @State var isInfoGiven = false
     
     var body: some View {
-//        NavigationView {
+        NavigationView {
             VStack {
                 Text(question.question)
                     .foregroundColor(Color.textColor)
@@ -92,9 +92,7 @@ struct EnterInputPage: View {
                             }
                             Spacer()
                             if currentQuestionNum == arrayOfQuestions.count - 1 {
-//                                NavigationLink {
                                 Button {
-//                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
                                     isInfoGiven = true
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
@@ -159,7 +157,7 @@ struct EnterInputPage: View {
                         }
                     }
                 }
-//                    }
+                    }
                 .sheet(isPresented: $isHintGiven) {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
                 }

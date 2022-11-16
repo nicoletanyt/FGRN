@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct PastInputPage: View {
+    
     @State var language: Bool
+    @State var isInfoGiven = false
     @EnvironmentObject var inputManager: InputDataStore
+    
     var body: some View {
         Text(language ? "电子邮件历史。" : "Email History.")
             .font(.largeTitle)
@@ -19,6 +22,7 @@ struct PastInputPage: View {
             ForEach(inputManager.inputs, id: \.self) { inputStruct in
                 NavigationLink {
                     DisplayInfoPage(questionsArray: inputStruct, language: language)
+                        .navigationBarHidden(true)
                 } label: {
                     Text("Recent")
                 }
@@ -43,8 +47,8 @@ struct PastInputPage: View {
     }
 }
 
-struct PastInputPage_Previews: PreviewProvider {
-    static var previews: some View {
-        PastInputPage(language: false)
-    }
-}
+//struct PastInputPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PastInputPage(language: false)
+//    }
+//}

@@ -37,15 +37,17 @@ struct WelcomePage: View {
                         }
                     
                     NavigationLink {
-                        TutorialPage(language: languageToggle)
-                    } label: {
-                        ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
-                    }
-                    NavigationLink {
                         PastInputPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "历史" : "History")
                     }
+                    
+                    NavigationLink {
+                        TutorialPage(language: languageToggle)
+                    } label: {
+                        ButtonDisplay(text: languageToggle ? "教程" : "Tutorial")
+                    }
+                    
                     NavigationLink {
                         CreditsPage()
                     } label: {

@@ -20,7 +20,7 @@ struct NewInfoSheet: View {
                 .disableAutocorrection(true)
             Button("save info") {
 //                questions.append(Question(question: "", input: infos))
-//                dismiss()
+                dismiss()
             }
         }
     }
