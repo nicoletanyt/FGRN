@@ -18,6 +18,10 @@ struct DisplayInfoPage: View {
 //        UIScrollView.appearance().backgroundColor = .white
 //    }
     
+    @State private var isDone = false
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
 //        NavigationView {
             List {
@@ -97,8 +101,13 @@ struct DisplayInfoPage: View {
 //                        Text(killme.question)
 //                    }
 //                }
+                Button("Done") {
+                    isDone = true
+                    dismiss()
+                    
+                }
             }
-
+            .interactiveDismissDisabled(!isDone)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()

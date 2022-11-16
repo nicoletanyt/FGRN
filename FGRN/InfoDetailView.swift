@@ -17,6 +17,11 @@ struct InfoDetailView: View {
                 .textFieldStyle(.roundedBorder)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
+            Button {
+                
+            } label: {
+                
+            }
         }
     }
 }

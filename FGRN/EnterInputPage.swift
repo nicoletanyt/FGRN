@@ -16,6 +16,7 @@ struct EnterInputPage: View {
     @State var language: Bool //true for chinese, false for english
     
     @State var isHintGiven = false
+    @State var isInfoGiven = false
     
     var body: some View {
 //        NavigationView {
@@ -91,8 +92,10 @@ struct EnterInputPage: View {
                             }
                             Spacer()
                             if currentQuestionNum == arrayOfQuestions.count - 1 {
-                                NavigationLink {
-                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
+//                                NavigationLink {
+                                Button {
+//                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
+                                    isInfoGiven = true
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
                                 }
@@ -159,6 +162,9 @@ struct EnterInputPage: View {
 //                    }
                 .sheet(isPresented: $isHintGiven) {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
+                }
+                .sheet(isPresented: $isInfoGiven) {
+                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language)
                 }
         }
     }
