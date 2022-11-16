@@ -44,6 +44,13 @@ struct EnterInputPage: View {
                         .foregroundColor(Color.lightBlue)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .submitLabel(.next)
+                        .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
+                            questionsArray[currentQuestionNum] = question //saves the question
+                            currentQuestionNum += 1
+                            question = questionsArray[currentQuestionNum]
+                            currentProgress += 1/16 //15 is the number of questions in the array
+                        } }
                 }
                 Divider()
                     .frame(height: 4)
@@ -74,7 +81,7 @@ struct EnterInputPage: View {
                                 .cornerRadius(50)
                         }
                     }
-
+                    
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
                             Button {
@@ -92,7 +99,9 @@ struct EnterInputPage: View {
                             }
                             Spacer()
                             if currentQuestionNum == arrayOfQuestions.count - 1 {
+                                //                                NavigationLink {
                                 Button {
+                                    //                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
                                     isInfoGiven = true
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
@@ -181,7 +190,7 @@ struct EnterInputPage: View {
             .cornerRadius(15)
         }
     }
-//}
+}
 //
 //struct EnterInputPage_Previews: PreviewProvider {
 //    static var previews: some View {
