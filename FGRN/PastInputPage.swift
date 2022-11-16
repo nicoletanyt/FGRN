@@ -25,7 +25,7 @@ struct PastInputPage: View {
                         .navigationBarHidden(true)
 //                    DisplayInfoPage(questionsArray: inputStruct.input, language: language)
                 } label: {
-                    Text("Recent")
+                    Text(inputStruct.name)
                 }
             }
             .onDelete { indexSet in
