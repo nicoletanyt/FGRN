@@ -30,10 +30,12 @@ struct PastInputPage: View {
             }
             .onDelete { indexSet in
                 inputManager.inputs.remove(atOffsets: indexSet)
+                inputManager.saveInput()
             }
-//            .onMove { oldOffset, newOffset in
-//                inputManager.inputs.move(fromOffsets: oldOffset, toOffset: newOffset)
-//            }
+            .onMove { oldOffset, newOffset in
+                inputManager.inputs.move(fromOffsets: oldOffset, toOffset: newOffset)
+                inputManager.saveInput()
+            }
         }
 
         .onAppear {
