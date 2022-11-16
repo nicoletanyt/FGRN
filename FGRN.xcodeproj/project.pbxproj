@@ -18,6 +18,7 @@
 		A2556468290CB6A0007F3AC6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556467290CB6A0007F3AC6 /* Colors.swift */; };
 		A255646A290CBDDE007F3AC6 /* EnterInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */; };
 		A255646C290CC169007F3AC6 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A255646B290CC169007F3AC6 /* Questions.swift */; };
+		A26664282924898300779998 /* UserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26664272924898300779998 /* UserInput.swift */; };
 		A26BB841292209E9006C5070 /* PastInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB840292209E9006C5070 /* PastInputPage.swift */; };
 		A26BB84329220A59006C5070 /* InputDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB84229220A59006C5070 /* InputDataStore.swift */; };
 		A26BB84529220A5E006C5070 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB84429220A5E006C5070 /* FileManager.swift */; };
@@ -39,6 +40,7 @@
 		A2556467290CB6A0007F3AC6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInputPage.swift; sourceTree = "<group>"; };
 		A255646B290CC169007F3AC6 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		A26664272924898300779998 /* UserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInput.swift; sourceTree = "<group>"; };
 		A26BB840292209E9006C5070 /* PastInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastInputPage.swift; sourceTree = "<group>"; };
 		A26BB84229220A59006C5070 /* InputDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataStore.swift; sourceTree = "<group>"; };
 		A26BB84429220A5E006C5070 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				A2D075CC29038F45000201FD /* ContentView.swift */,
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
 				A26BB840292209E9006C5070 /* PastInputPage.swift */,
+				A26664272924898300779998 /* UserInput.swift */,
 				A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */,
 				204B7CA1291615F7007BD2F9 /* HintsPage.swift */,
 				A26BB84429220A5E006C5070 /* FileManager.swift */,
@@ -193,6 +196,7 @@
 				204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */,
 				200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */,
 				200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */,
+				A26664282924898300779998 /* UserInput.swift in Sources */,
 				204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */,
 				A26BB84329220A59006C5070 /* InputDataStore.swift in Sources */,
 			);

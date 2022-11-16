@@ -28,11 +28,11 @@ struct PastInputPage: View {
                 }
             }
             .onDelete { indexSet in
-                    inputManager.inputs.remove(atOffsets: indexSet)
+                inputManager.inputs.remove(atOffsets: indexSet)
             }
-            .onMove { oldOffset, newOffset in
-                inputManager.inputs.move(fromOffsets: oldOffset, toOffset: newOffset)
-            }
+//            .onMove { oldOffset, newOffset in
+//                inputManager.inputs.move(fromOffsets: oldOffset, toOffset: newOffset)
+//            }
         }
 
         .onAppear {

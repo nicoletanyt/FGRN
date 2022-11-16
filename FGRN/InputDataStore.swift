@@ -8,9 +8,9 @@
 import Foundation
 
 class InputDataStore: ObservableObject {
-    @Published var inputs: [[Question]] = []
+    @Published var inputs: [UserInput] = []
     
-    let fileName = "Inputs.json"
+    let fileName = "EmailHistory.json"
     
     init() {
         if FileManager().docExist(named: fileName) {
@@ -18,8 +18,8 @@ class InputDataStore: ObservableObject {
         }
     }
     
-    func addInput(_ input: [Question]) {
-        inputs.append(input)
+    func addInput(name: String, input: [Question]) {
+        inputs.append(UserInput(name: name, input: input))
         saveInput()
     }
 //
@@ -40,7 +40,7 @@ class InputDataStore: ObservableObject {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    inputs = try decoder.decode([[Question]].self, from: data)
+                    inputs = try decoder.decode([UserInput].self, from: data)
                 } catch {
                     print("Loading Input Error: " + error.localizedDescription)
                 }
