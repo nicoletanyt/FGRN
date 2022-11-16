@@ -19,7 +19,7 @@ struct EnterInputPage: View {
     @State var isInfoGiven = false
     
     var body: some View {
-//        NavigationView {
+        NavigationView {
             VStack {
                 Text(question.question)
                     .foregroundColor(Color.textColor)
@@ -74,7 +74,7 @@ struct EnterInputPage: View {
                                 .cornerRadius(50)
                         }
                     }
-
+                    
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
                             Button {
@@ -92,9 +92,9 @@ struct EnterInputPage: View {
                             }
                             Spacer()
                             if currentQuestionNum == arrayOfQuestions.count - 1 {
-//                                NavigationLink {
+                                //                                NavigationLink {
                                 Button {
-//                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
+                                    //                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
                                     isInfoGiven = true
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
@@ -159,7 +159,7 @@ struct EnterInputPage: View {
                         }
                     }
                 }
-//                    }
+            //                    }
                 .sheet(isPresented: $isHintGiven) {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
                 }
@@ -183,7 +183,7 @@ struct EnterInputPage: View {
             .cornerRadius(15)
         }
     }
-//}
+}
 //
 //struct EnterInputPage_Previews: PreviewProvider {
 //    static var previews: some View {
