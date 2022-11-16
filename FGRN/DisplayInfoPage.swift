@@ -135,7 +135,7 @@ struct DisplayInfoPage: View {
             .navigationBarTitle("Your Final Info")
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(questions: $questionsArray)
+                NewInfoSheet(questions: $questionsArray, typeString: "love you")
             }
         }
     }

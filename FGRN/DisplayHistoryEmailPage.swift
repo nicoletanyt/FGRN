@@ -15,7 +15,7 @@ struct DisplayHistoryEmailPage: View {
     
     @State var isSheetGive = false
     
-    @State private var isDone = false
+    @State var isDone = false
     @State var emailName = ""
     
     @Environment(\.dismiss) var dismiss
@@ -119,7 +119,7 @@ struct DisplayHistoryEmailPage: View {
             .navigationBarTitle(inputInfo.name)
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(questions: $inputInfo.input)
+                NewInfoSheet(questions: $inputInfo.input, typeString: "love")
             }
         }
     }
