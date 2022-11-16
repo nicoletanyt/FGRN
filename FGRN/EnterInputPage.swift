@@ -44,6 +44,13 @@ struct EnterInputPage: View {
                         .foregroundColor(Color.lightBlue)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
+                        .submitLabel(.next)
+                        .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
+                            questionsArray[currentQuestionNum] = question //saves the question
+                            currentQuestionNum += 1
+                            question = questionsArray[currentQuestionNum]
+                            currentProgress += 1/16 //15 is the number of questions in the array
+                        } }
                 }
                 Divider()
                     .frame(height: 4)
