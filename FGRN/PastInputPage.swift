@@ -21,9 +21,9 @@ struct PastInputPage: View {
         List {
             ForEach(inputManager.inputs, id: \.self) { inputStruct in
                 NavigationLink {
-                    DisplayInfoPage(questionsArray: inputStruct.input, language: language)
-                        .navigationBarHidden(true)
 //                    DisplayInfoPage(questionsArray: inputStruct.input, language: language)
+                    DisplayHistoryEmailPage(inputInfo: inputStruct, language: language)
+                        .navigationBarHidden(true)
                 } label: {
                     Text(inputStruct.name)
                 }

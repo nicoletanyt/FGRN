@@ -23,11 +23,11 @@ class InputDataStore: ObservableObject {
         saveInput()
     }
 //
-//    func updateInput(_ input: Question) {
-//        guard let index = inputs.firstIndex(where: { $0.id == input.id}) else { return }
-//        inputs[index] = input
-//        saveInput()
-//    }
+    func updateInput(_ inputStruct: UserInput) {
+        guard let index = inputs.firstIndex(where: { $0.id == inputStruct.id}) else { return }
+        inputs[index] = inputStruct
+        saveInput()
+    }
     
     func deleteInput(at indexSet: IndexSet) {
         inputs.remove(atOffsets: indexSet)
