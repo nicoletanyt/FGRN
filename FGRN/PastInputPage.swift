@@ -21,8 +21,9 @@ struct PastInputPage: View {
         List {
             ForEach(inputManager.inputs, id: \.self) { inputStruct in
                 NavigationLink {
-                    DisplayInfoPage(questionsArray: inputStruct, language: language)
+                    DisplayInfoPage(questionsArray: inputStruct.input, language: language)
                         .navigationBarHidden(true)
+//                    DisplayInfoPage(questionsArray: inputStruct.input, language: language)
                 } label: {
                     Text("Recent")
                 }
