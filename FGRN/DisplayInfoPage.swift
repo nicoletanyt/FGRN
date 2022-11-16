@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct DisplayInfoPage: View {
-    
-//    @State var question: Question
+    @EnvironmentObject var inputManager: InputDataStore
     @State var questionsArray: [Question]
     @State var isSheetGive = false
     @State var language: Bool
@@ -19,6 +18,8 @@ struct DisplayInfoPage: View {
 //    }
     
     @State private var isDone = false
+    @State var isShowAlert = false
+    @State var emailName = ""
     
     @Environment(\.dismiss) var dismiss
     
@@ -103,13 +104,23 @@ struct DisplayInfoPage: View {
 //                }
                 Button("Done") {
                     isDone = true
-                    dismiss()
-                    
+                    isShowAlert = true
                 }
+                .alert("Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
+                    TextField("Name", text: $emailName)
+                    
+                    Button("Save", action: {
+                        inputManager.addInput(name: emailName, input: questionsArray)
+                        dismiss()
+                    })
+                    Button("Cancel", role: .cancel, action: {
+                        dismiss()
+                    })
+                }, message: {
+                    Text("Press Cancel if you do not want to save it.")
+                })
             }
             .interactiveDismissDisabled(!isDone)
-            .navigationBarTitle("Your Final Info")
-
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -125,9 +136,11 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-        }
-        .sheet(isPresented: $isSheetGive) {
-            NewInfoSheet(questions: $questionsArray)
+            .navigationBarTitle("Your Final Info")
+            //        }
+            .sheet(isPresented: $isSheetGive) {
+                NewInfoSheet(questions: $questionsArray)
+            }
         }
     }
 }
