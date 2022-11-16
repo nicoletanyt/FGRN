@@ -1,45 +1,41 @@
 //
-//  DisplayInfoPage.swift
+//  DisplayHistoryEmailPage.swift
 //  FGRN
 //
-//  Created by FAITH CHONG RUI EN stu on 5/11/22.
+//  Created by NICOLE TAN YITONG stu on 16/11/22.
 //
 
 import SwiftUI
 
-struct DisplayInfoPage: View {
+
+struct DisplayHistoryEmailPage: View {
     @EnvironmentObject var inputManager: InputDataStore
-    @State var questionsArray: [Question]
-    @State var isSheetGive = false
+    @State var inputInfo: UserInput
     @State var language: Bool
-    //    init() {
-    //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
-    //        UIScrollView.appearance().backgroundColor = .white
-    //    }
+    
+    @State var isSheetGive = false
     
     @State private var isDone = false
-    @State var isShowAlert = false
     @State var emailName = ""
     
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
-            //        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
                     ForEach(0..<4) { question1 in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question1])
+                            InfoDetailView(question: $inputInfo.input[question1])
                         } label: {
-                            Text(questionsArray[question1].input)
+                            Text(inputInfo.input[question1].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        inputInfo.input.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -48,16 +44,16 @@ struct DisplayInfoPage: View {
                 Section(header: Text(language ? "问候语" : "Greeting")) {
                     ForEach(4..<6) { question2 in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question2])
+                            InfoDetailView(question: $inputInfo.input[question2])
                         } label: {
-                            Text(questionsArray[question2].input)
+                            Text(inputInfo.input[question2].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        inputInfo.input.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -66,16 +62,16 @@ struct DisplayInfoPage: View {
                 Section(header: Text(language ? "内容" : "Content")) {
                     ForEach(6..<14) { question3 in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question3])
+                            InfoDetailView(question: $inputInfo.input[question3])
                         } label: {
-                            Text(questionsArray[question3].input)
+                            Text(inputInfo.input[question3].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        inputInfo.input.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -84,16 +80,16 @@ struct DisplayInfoPage: View {
                 Section(header: Text(language ? "闭幕" : "Closing")) {
                     ForEach(14..<16) { question4 in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question4])
+                            InfoDetailView(question: $inputInfo.input[question4])
                         } label: {
-                            Text(questionsArray[question4].input)
+                            Text(inputInfo.input[question4].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        inputInfo.input.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -101,21 +97,9 @@ struct DisplayInfoPage: View {
                 
                 Button("Done") {
                     isDone = true
-                    isShowAlert = true
+                    inputManager.updateInput(inputInfo)
+                    dismiss()
                 }
-                .alert("Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
-                    TextField("Name", text: $emailName)
-                    
-                    Button("Save", action: {
-                        inputManager.addInput(name: emailName, input: questionsArray)
-                        dismiss()
-                    })
-                    Button("Cancel", role: .cancel, action: {
-                        dismiss()
-                    })
-                }, message: {
-                    Text("Press Cancel if you do not want to save it.")
-                })
             }
             .interactiveDismissDisabled(!isDone)
             .toolbar {
@@ -132,10 +116,10 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-            .navigationBarTitle("Your Final Info")
+            .navigationBarTitle(inputInfo.name)
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(questions: $questionsArray)
+                NewInfoSheet(questions: $inputInfo.input)
             }
         }
     }
