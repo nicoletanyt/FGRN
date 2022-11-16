@@ -190,7 +190,7 @@ struct EnterInputPage: View {
             .cornerRadius(15)
         }
     }
-}
+
 //
 //struct EnterInputPage_Previews: PreviewProvider {
 //    static var previews: some View {
