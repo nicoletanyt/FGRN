@@ -15,6 +15,8 @@ struct NewInfoSheet: View {
     @Binding var Greeting: Int
     @Binding var Content: Int
     @Binding var Closing: Int
+    @Binding var End: Int
+
 
     @State var typeString: String
 
@@ -57,11 +59,40 @@ struct NewInfoSheet: View {
             
             Button("save info") {
                 if typeString == "Basic Info" {
-                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: 0)
+                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: BasicInfo)
 //                    BasicInfo = BasicInfo + 1
                     Greeting = Greeting + 1
                     Content = Content + 1
                     Closing = Closing + 1
+                    End = End + 1
+
+                }
+                else if typeString == "Greeting" {
+                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Greeting)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+                    Content = Content + 1
+                    Closing = Closing + 1
+                    End = End + 1
+
+                }
+                else if typeString == "Content" {
+                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Content)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+//                    Content = Content + 1
+                    Closing = Closing + 1
+                    End = End + 1
+
+                }
+                else if typeString == "Closing" {
+                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Closing)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+//                    Content = Content + 1
+//                    Closing = Closing + 1
+                    End = End + 1
+
                 }
 //                questions.insert(infos, at: //content gengre thinh)
                 dismiss()
