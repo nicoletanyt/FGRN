@@ -35,7 +35,7 @@ var arrayOfQuestions: [Question] = [
     Question(question: "Info 1", input: "", questionType:"Content"),
     Question(question: "Info 2", input: "", questionType:"Content"),
     Question(question: "Culture", input: "", questionType:"Content"),
-    Question(question: "Sensitive issues of the audience", input: "", questionType:"Content"),
+    Question(question: "Sensitive issues?", input: "", questionType:"Content"),
     
     Question(question: "Closing", input: "", options: ["Choose Info", "Regards", "Best Regards", "Yours Sincerely", "Yours Faithfully", "Thanks", "Thank You", "Thanks in Advance", "Cheers"], questionType:"Closing"),
     Question(question: "What is your name / title?", input: "", questionType:"Closing"),

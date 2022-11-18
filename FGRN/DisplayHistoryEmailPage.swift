@@ -123,6 +123,14 @@ struct DisplayHistoryEmailPage: View {
 //                    }
 //                }
                 //commented until nicole.
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        UIPasteboard.general.strings = [inputInfo.input[0].input, inputInfo.input[1].input, inputInfo.input[2].input, inputInfo.input[3].input, inputInfo.input[4].input, inputInfo.input[5].input, inputInfo.input[6].input, inputInfo.input[7].input, inputInfo.input[8].input, inputInfo.input[9].input, inputInfo.input[10].input, inputInfo.input[11].input, inputInfo.input[12].input, inputInfo.input[13].input, inputInfo.input[14].input, inputInfo.input[15].input]
+                    } label: {
+                        Image(systemName: "doc.on.doc")
+                            .foregroundColor(.textColor)
+                    }
+                }
             }
             .navigationBarTitle(inputInfo.name)
             //        }
