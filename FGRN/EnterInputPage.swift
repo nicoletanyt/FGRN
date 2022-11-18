@@ -48,12 +48,14 @@ struct EnterInputPage: View {
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
                             .submitLabel(.next)
-                            .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
-                                questionsArray[currentQuestionNum] = question //saves the question
-                                currentQuestionNum += 1
-                                question = questionsArray[currentQuestionNum]
-                                currentProgress += 1/16 //15 is the number of questions in the array
-                            } }
+                            .onSubmit {
+                                if currentQuestionNum < questionsArray.count - 1 {
+                                    questionsArray[currentQuestionNum] = question //saves the question
+                                    currentQuestionNum += 1
+                                    question = questionsArray[currentQuestionNum]
+                                    currentProgress += 1/16 //15 is the number of questions in the array
+                                }
+                            }
                     } else {
                         // Fallback on earlier versions
                     }
@@ -61,7 +63,95 @@ struct EnterInputPage: View {
                 Divider()
                     .frame(height: 4)
                     .background(Color.lightBlue)
-            }         .padding(.horizontal, 50)
+                if isHintGiven == true {
+                switch currentQuestionNum {
+                case 0:
+                    Text(language ? "这是一个问候， 利用时间" : "This is a polite greeting depending on the time of day.")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                        
+                case 1:
+                    Text(language ? "输入他/她的姓名或姓" : "You can enter their name, surname or title (Ms., Mr.)")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 2:
+                    Text(language ? "输入他/她的职业，部门，公司" : "You can enter their job, department or group / company.")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 3:
+                    Text(language ? "电邮的主题" : "Topic of your email")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 4:
+                    Text(language ? "根据您的电子邮件的形式选择" : "Choose based on the formality of your email")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 5:
+                    Text(language ? "我正在写这封电子邮件给 ___（告诉，问，等）你" : "I am writing this email to ___(inform, tell, etc.) you")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 6:
+                    Text(language ? "你的电邮的目的是什么？" : "Why are you writing your email?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 7:
+                    Text(language ? "目的的观点是什么？" : "What is the point of your purpose?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 8:
+                    Text(language ? "你要问的一个问题" : "What is a question you want to ask the recipient?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 9:
+                    Text(language ? "电邮的背景是什么？" : "What is the background of this email?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 10:
+                    Text(language ? "要告诉收件人的事情" : "Something to tell the recipient")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 11:
+                    Text(language ? "要告诉收件人的事情" : "Something to tell the recipient")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 12:
+                    Text(language ? "您的收件人的背景是什么，您应该记住哪些传统？" : "What is your recipient’s background, any traditions you should keep in mind?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 13:
+                    Text(language ? "有什么你应该避免谈论的问题吗？" : "Are there any issues that you should avoid talking about?")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                case 14:
+                    Text(language ? "你要怎么结束你的电邮？公务，或者是私人？" : "How do you want to end the email? tip: sincerely is used when you know your recipient’s name, faithfully is when you don’t know your recipient’s name")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                case 15:
+                    Text(language ? "你的名字是什么？" : "To sign off your email")
+                        .bold()
+                        .foregroundColor(Color.textColor)
+                        .padding()
+                default:
+                    EmptyView()
+                }
+
+                }
+            }
+            .padding(.horizontal, 50)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         ZStack (alignment: .leading) {
@@ -91,6 +181,7 @@ struct EnterInputPage: View {
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
                             Button {
+                                isHintGiven = false
                                 //Toggle previous question
                                 if currentQuestionNum > 0 {
                                     questionsArray[currentQuestionNum] = question //saves the question
@@ -117,7 +208,7 @@ struct EnterInputPage: View {
                                 //                                }
                             } else {
                                 Button {
-                                    
+                                    isHintGiven = false
                                     //Toggle next question
                                     if currentQuestionNum < questionsArray.count - 1{
                                         questionsArray[currentQuestionNum] = question //saves the question
@@ -125,7 +216,8 @@ struct EnterInputPage: View {
                                         question = questionsArray[currentQuestionNum]
                                         currentProgress += 1/16 //15 is the number of questions in the array
                                     }
-                                    if currentQuestionNum - 1 == 0 {
+                                    
+                                    if currentQuestionNum == 1 {
                                         //question about time
                                         if questionsArray[currentQuestionNum - 1].input != "" {
                                             //changes only if the input is changed, otherwise it'll give the default "day"
@@ -136,7 +228,7 @@ struct EnterInputPage: View {
                                             }
                                         }
                                     }
-                                    if currentQuestionNum - 1 == 1 {
+                                    if currentQuestionNum == 2 {
                                         //currentQuestionNum == 1: second question about name
                                         if language {
                                             questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
@@ -171,6 +263,10 @@ struct EnterInputPage: View {
                             
                         }
                     }
+                }
+                    }
+                .sheet(isPresented: $isInfoGiven) {
+                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language, welcomePageActive: $welcomePageActive)
                 }
         }
         .sheet(isPresented: $isHintGiven) {
