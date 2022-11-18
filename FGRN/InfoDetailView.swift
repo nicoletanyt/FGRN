@@ -15,10 +15,14 @@ struct InfoDetailView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("reenter your info", text: $question.input)
-                    .textFieldStyle(.roundedBorder)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
+                if #available(iOS 16.0, *) {
+                    TextField("reenter your info", text: $question.input, axis: .vertical)
+                        .textFieldStyle(.roundedBorder)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                } else {
+                    // Fallback on earlier versions
+                }
                 Button("save info") {
                     dismiss()
                 }

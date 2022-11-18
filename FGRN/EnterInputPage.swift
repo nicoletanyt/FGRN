@@ -41,18 +41,22 @@ struct EnterInputPage: View {
                     .pickerStyle(.menu)
                     
                 } else {
-                    TextField(language ? "输入" : "Enter Your Input", text: $question.input)
-                        .font(.system(size: 25))
-                        .foregroundColor(Color.lightBlue)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                        .submitLabel(.next)
-                        .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
-                            questionsArray[currentQuestionNum] = question //saves the question
-                            currentQuestionNum += 1
-                            question = questionsArray[currentQuestionNum]
-                            currentProgress += 1/16 //15 is the number of questions in the array
-                        } }
+                    if #available(iOS 16.0, *) {
+                        TextField(language ? "输入" : "Enter Your Input", text: $question.input, axis: .vertical)
+                            .font(.system(size: 25))
+                            .foregroundColor(Color.lightBlue)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .submitLabel(.next)
+                            .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
+                                questionsArray[currentQuestionNum] = question //saves the question
+                                currentQuestionNum += 1
+                                question = questionsArray[currentQuestionNum]
+                                currentProgress += 1/16 //15 is the number of questions in the array
+                            } }
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 Divider()
                     .frame(height: 4)

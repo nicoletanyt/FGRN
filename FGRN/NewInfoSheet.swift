@@ -27,9 +27,14 @@ struct NewInfoSheet: View {
     
     var body: some View {
         Form {
-            TextField("enter extra info", text: $infos)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
+            if #available(iOS 16.0, *) {
+                TextField("enter extra info", text: $infos, axis: .vertical)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+            } else {
+                // Fallback on earlier versions
+            }
+                
             
             Picker("Info Genre", selection: $typeString) {
 //                Text("Choose Type")

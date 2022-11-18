@@ -49,8 +49,8 @@ struct WelcomePage: View {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial", image: "questionmark.circle.fill")
                     }
                     
-                    NavigationLink {
-                        CreditsPage()
+                    NavigationLink{
+                        CreditsPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "信用" : "Credits", image: "command.circle.fill")
 

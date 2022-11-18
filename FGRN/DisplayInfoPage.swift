@@ -122,8 +122,8 @@ struct DisplayInfoPage: View {
                         dismiss()
                     })
                     Button(language ? "取消" : "Cancel", role: .cancel, action: {
-                        welcomePageActive = false
-                        dismiss()
+//                        welcomePageActive = false
+//                        .cancel()
                     })
                 }, message: {
                     Text(language ? "如果不想保存，请按取消。" : "Press Cancel if you do not want to save it.")
