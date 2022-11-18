@@ -33,7 +33,7 @@ struct DisplayInfoPage: View {
             //        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
-                    ForEach($basicInfoNumber ..< $greetingNumber) { question1 in
+                    ForEach(basicInfoNumber ..< greetingNumber, id: \.self) { question1 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question1])
                         } label: {
@@ -51,7 +51,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "问候语" : "Greeting")) {
-                    ForEach($greetingNumber ..< $contentNumber) { question2 in
+                    ForEach(greetingNumber ..< contentNumber, id: \.self) { question2 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question2])
                         } label: {
@@ -69,7 +69,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "内容" : "Content")) {
-                    ForEach(contentNumber ..< closingNumber) { question3 in
+                    ForEach(contentNumber ..< closingNumber, id: \.self) { question3 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question3])
                         } label: {
@@ -87,7 +87,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "闭幕" : "Closing")) {
-                    ForEach(closingNumber ..< endNumber) { question4 in
+                    ForEach(closingNumber ..< endNumber, id: \.self) { question4 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question4])
                         } label: {
