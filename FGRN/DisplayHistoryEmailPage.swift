@@ -114,14 +114,15 @@ struct DisplayHistoryEmailPage: View {
                     EditButton()
                         .foregroundColor(.textColor)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isSheetGive = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.textColor)
-                    }
-                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button {
+//                        isSheetGive = true
+//                    } label: {
+//                        Image(systemName: "plus")
+//                            .foregroundColor(.textColor)
+//                    }
+//                }
+                //commented until nicole.
             }
             .navigationBarTitle(inputInfo.name)
             //        }
