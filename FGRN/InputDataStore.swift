@@ -18,8 +18,9 @@ class InputDataStore: ObservableObject {
         }
     }
     
-    func addInput(name: String, input: [Question]) {
-        inputs.append(UserInput(name: name, input: input))
+    func addInput(name: String, basicInfo: [Question], greetingInfo: [Question], contentInfo: [Question], closingInfo: [Question]) {
+//        inputs.append(UserInput(name: name, input: input, basicInfoNumber: basicInfo, greetingNumber: greeting, contentNumber: content, closingNumber: closing, endNumber: end))
+        inputs.append(UserInput(name: name, basicInfo: basicInfo, greetingInfo: greetingInfo, contentInfo: contentInfo, closingInfo: closingInfo))
         saveInput()
     }
 //

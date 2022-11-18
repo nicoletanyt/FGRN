@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct EnterInputPage: View {
-//    @EnvironmentObject var inputManager: InputDataStore
+    //    @EnvironmentObject var inputManager: InputDataStore
     @State var question: Question
     @State var questionsArray: [Question]
     @State var currentQuestionNum: Int
     @State var currentProgress: CGFloat = 0.0
     @State var language: Bool //true for chinese, false for english
-//    @State var isActive2: Bool = false
-
+    //    @State var isActive2: Bool = false
+    
     @State var isHintGiven = false
     @State var isInfoGiven = false
     @Binding var welcomePageActive: Bool
@@ -112,9 +112,9 @@ struct EnterInputPage: View {
                                 } label: {
                                     toggleButton(type: language ? "制造" : "Generate")
                                 }
-//                                .onAppear {
-//                                    inputManager.addInput(questionsArray) //saves the input
-//                                }
+                                //                                .onAppear {
+                                //                                    inputManager.addInput(questionsArray) //saves the input
+                                //                                }
                             } else {
                                 Button {
                                     
@@ -172,30 +172,31 @@ struct EnterInputPage: View {
                         }
                     }
                 }
-                    }
-                .sheet(isPresented: $isHintGiven) {
-                    HintsPage(language: language, currentquestion: currentQuestionNum)
-                }
-                .sheet(isPresented: $isInfoGiven) {
-                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language, welcomePageActive: $welcomePageActive)
-                }
+        }
+        .sheet(isPresented: $isHintGiven) {
+            HintsPage(language: language, currentquestion: currentQuestionNum)
+        }
+        .sheet(isPresented: $isInfoGiven) {
+            //                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language, welcomePageActive: $welcomePageActive)
+            DisplayInfoPage(language: language, basicInfo: questionsArray.filter {$0.questionType == "Basic Info" && $0.input != ""}, greetingInfo: questionsArray.filter {$0.questionType == "Greeting" && $0.input != ""}, contentInfo: questionsArray.filter {$0.questionType == "Content" && $0.input != ""}, closingInfo: questionsArray.filter {$0.questionType == "Closing" && $0.input != ""}, welcomePageActive: $welcomePageActive)
         }
     }
+}
+
+struct toggleButton: View {
+    var type: String
     
-    struct toggleButton: View {
-        var type: String
-        
-        var body: some View {
-            HStack {
-                Text(type)
-                Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
-            }
-            .padding()
-            .background(Color.darkTeal)
-            .foregroundColor(Color.white)
-            .cornerRadius(15)
+    var body: some View {
+        HStack {
+            Text(type)
+            Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
         }
+        .padding()
+        .background(Color.darkTeal)
+        .foregroundColor(Color.white)
+        .cornerRadius(15)
     }
+}
 
 //
 //struct EnterInputPage_Previews: PreviewProvider {

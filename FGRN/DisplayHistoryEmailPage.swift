@@ -18,12 +18,7 @@ struct DisplayHistoryEmailPage: View {
     @State var isDone = false
     @State var emailName = ""
     
-    
-    @State var basicInfoNumber = 0
-    @State var greetingNumber = 4
-    @State var contentNumber = 6
-    @State var closingNumber = 14
-    @State var endNumber = 16
+    @State var inputCopy: [String] = [] //stuff to be copied
     
     @Environment(\.dismiss) var dismiss
     
@@ -31,72 +26,72 @@ struct DisplayHistoryEmailPage: View {
         NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
-                    ForEach(0..<4) { question1 in
+                    ForEach(0..<inputInfo.basicInfo.count, id: \.self) { infoIndex in
                         NavigationLink {
-                            InfoDetailView(question: $inputInfo.input[question1])
+                            InfoDetailView(question: $inputInfo.basicInfo[infoIndex])
                         } label: {
-                            Text(inputInfo.input[question1].input)
+                            Text(inputInfo.basicInfo[infoIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        inputInfo.input.remove(atOffsets: indexSet)
+                        inputInfo.basicInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.basicInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "问候语" : "Greeting")) {
-                    ForEach(4..<6) { question2 in
+                    ForEach(0..<inputInfo.greetingInfo.count, id: \.self) { greetingIndex in
                         NavigationLink {
-                            InfoDetailView(question: $inputInfo.input[question2])
+                            InfoDetailView(question: $inputInfo.greetingInfo[greetingIndex])
                         } label: {
-                            Text(inputInfo.input[question2].input)
+                            Text(inputInfo.greetingInfo[greetingIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        inputInfo.input.remove(atOffsets: indexSet)
+                        inputInfo.greetingInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.greetingInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                
+
                 Section(header: Text(language ? "内容" : "Content")) {
-                    ForEach(6..<14) { question3 in
+                    ForEach(0 ..< inputInfo.contentInfo.count, id: \.self) { contentIndex in
                         NavigationLink {
-                            InfoDetailView(question: $inputInfo.input[question3])
+                            InfoDetailView(question: $inputInfo.contentInfo[contentIndex])
                         } label: {
-                            Text(inputInfo.input[question3].input)
+                            Text(inputInfo.contentInfo[contentIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        inputInfo.input.remove(atOffsets: indexSet)
+                        inputInfo.contentInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.contentInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                
-                Section(header: Text(language ? "闭幕" : "Closing")) {
-                    ForEach(14..<16) { question4 in
+
+                Section(header: Text(language ? "结束" : "Closing")) {
+                    ForEach(0 ..< inputInfo.closingInfo.count, id: \.self) { closingIndex in
                         NavigationLink {
-                            InfoDetailView(question: $inputInfo.input[question4])
+                            InfoDetailView(question: $inputInfo.closingInfo[closingIndex])
                         } label: {
-                            Text(inputInfo.input[question4].input)
+                            Text(inputInfo.closingInfo[closingIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        inputInfo.input.remove(atOffsets: indexSet)
+                        inputInfo.closingInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        inputInfo.input.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        inputInfo.closingInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -109,36 +104,36 @@ struct DisplayHistoryEmailPage: View {
                 }
             }
             .interactiveDismissDisabled(!isDone)
-            .toolbar {
+            .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                         .foregroundColor(.textColor)
                 }
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button {
-//                        isSheetGive = true
-//                    } label: {
-//                        Image(systemName: "plus")
-//                            .foregroundColor(.textColor)
-//                    }
-//                }
-                //commented until nicole.
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        UIPasteboard.general.strings = [inputInfo.input[0].input, inputInfo.input[1].input, inputInfo.input[2].input, inputInfo.input[3].input, inputInfo.input[4].input, inputInfo.input[5].input, inputInfo.input[6].input, inputInfo.input[7].input, inputInfo.input[8].input, inputInfo.input[9].input, inputInfo.input[10].input, inputInfo.input[11].input, inputInfo.input[12].input, inputInfo.input[13].input, inputInfo.input[14].input, inputInfo.input[15].input]
+                        isSheetGive = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.textColor)
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        for i in inputInfo.basicInfo + inputInfo.greetingInfo + inputInfo.contentInfo + inputInfo.closingInfo {
+                            inputCopy.append(i.input)
+                        }
+                        UIPasteboard.general.strings = inputCopy
                     } label: {
                         Image(systemName: "doc.on.doc")
                             .foregroundColor(.textColor)
                     }
                 }
-            }
+            })
             .navigationBarTitle(inputInfo.name)
-            //        }
             .sheet(isPresented: $isSheetGive) {
-//                NewInfoSheet(questions: $inputInfo.input, typeString: "love")
-                NewInfoSheet(infos: "", questions: $inputInfo.input, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing:  $closingNumber, End: $endNumber, typeString: "")
-
+                NewInfoSheet(basicInfo: $inputInfo.basicInfo, greetingInfo: $inputInfo.greetingInfo, contentInfo: $inputInfo.contentInfo, closingInfo: $inputInfo.closingInfo, typeString: "")
             }
         }
+        
     }
 }

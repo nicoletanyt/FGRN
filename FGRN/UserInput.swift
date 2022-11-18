@@ -11,5 +11,10 @@ struct UserInput: Identifiable, Codable, Hashable {
     var id = UUID()
     var name: String
     
-    var input: [Question] //input from the questions struct
+//    var input: [Question] //input from the questions struct
+    
+    var basicInfo: [Question]
+    var greetingInfo: [Question]
+    var contentInfo: [Question]
+    var closingInfo: [Question]
 }
