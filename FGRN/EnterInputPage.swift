@@ -133,18 +133,18 @@ struct EnterInputPage: View {
                                     if currentQuestionNum - 1 == 1 {
                                         //currentQuestionNum == 1: second question about name
                                         if language {
-                                            questionsArray[4].options[0] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[3] = "问候" + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[5] = "你好" + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[4] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
+                                            questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[4] = "问候" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[6] = "你好" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[5] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
                                             chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
                                             //                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
                                             //                                        questionsArray[15].options[1] = chineseGreetingFills[1]
                                         } else {
-                                            questionsArray[4].options[0] = "Dear " + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[3] = "Greetings " + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[5] = "Hi " + questionsArray[currentQuestionNum - 1].input
-                                            questionsArray[4].options[4] = "Good " + greetingFills[0] + greetingFills[1]
+                                            questionsArray[4].options[1] = "Dear " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[4] = "Greetings " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[6] = "Hi " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[5] = "Good " + greetingFills[0] + " " + greetingFills[1]
                                             greetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
                                         }
                                     }
@@ -152,9 +152,9 @@ struct EnterInputPage: View {
                                         //currentQuestionNum == 2: third question about job of person
                                         //this code will run when the current question is the next question so currentQuestionNum - 1 gives the answer of the previous question answered
                                         if language {
-                                            questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[2] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
                                         } else {
-                                            questionsArray[4].options[1] = "Dear " + questionsArray[currentQuestionNum - 1].input
+                                            questionsArray[4].options[2] = "Dear " + questionsArray[currentQuestionNum - 1].input
                                         }
                                     }
                                 } label: {
