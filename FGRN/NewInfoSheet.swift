@@ -37,10 +37,9 @@ struct NewInfoSheet: View {
                 
             
             Picker("Info Genre", selection: $typeString) {
-//                Text("Choose Type")
-//                    .tag(0)
-//                    .foregroundColor(.green)
-//                    .font(.system(size: 25))
+                Text("Choose Type")
+                    .tag(0)
+                    .font(.system(size: 25))
                 
                 ForEach(ah, id: \.self) { option in
                     Text(option)
