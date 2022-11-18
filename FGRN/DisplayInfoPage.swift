@@ -33,7 +33,7 @@ struct DisplayInfoPage: View {
             //        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
-                    ForEach(basicInfoNumber ..< greetingNumber, id: \.self) { question1 in
+                    ForEach((basicInfoNumber ..< greetingNumber), id: \.self) { question1 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question1])
                         } label: {
@@ -140,7 +140,7 @@ struct DisplayInfoPage: View {
             .navigationBarTitle("Your Final Info")
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, typeString: "")
+                NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, End: $endNumber, typeString: "")
             }
         }
     }

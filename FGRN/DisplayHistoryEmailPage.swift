@@ -114,20 +114,21 @@ struct DisplayHistoryEmailPage: View {
                     EditButton()
                         .foregroundColor(.textColor)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isSheetGive = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.textColor)
-                    }
-                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button {
+//                        isSheetGive = true
+//                    } label: {
+//                        Image(systemName: "plus")
+//                            .foregroundColor(.textColor)
+//                    }
+//                }
+                //commented until nicole.
             }
             .navigationBarTitle(inputInfo.name)
             //        }
             .sheet(isPresented: $isSheetGive) {
 //                NewInfoSheet(questions: $inputInfo.input, typeString: "love")
-                NewInfoSheet(infos: "", questions: $inputInfo.input, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing:  $closingNumber, typeString: "")
+                NewInfoSheet(infos: "", questions: $inputInfo.input, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing:  $closingNumber, End: $endNumber, typeString: "")
 
             }
         }
