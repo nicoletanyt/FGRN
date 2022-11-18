@@ -14,9 +14,11 @@ struct EnterInputPage: View {
     @State var currentQuestionNum: Int
     @State var currentProgress: CGFloat = 0.0
     @State var language: Bool //true for chinese, false for english
-    
+//    @State var isActive2: Bool = false
+
     @State var isHintGiven = false
     @State var isInfoGiven = false
+    @Binding var welcomePageActive: Bool
     
     var body: some View {
         NavigationView {
@@ -171,7 +173,7 @@ struct EnterInputPage: View {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
                 }
                 .sheet(isPresented: $isInfoGiven) {
-                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language)
+                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language, welcomePageActive: $welcomePageActive)
                 }
         }
     }

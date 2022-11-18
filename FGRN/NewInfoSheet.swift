@@ -20,8 +20,6 @@ struct NewInfoSheet: View {
 
     @State var typeString: String
 
-    
-
     @State  var ah = ["Basic Info", "Greeting", "Content", "Closing"]
 
     

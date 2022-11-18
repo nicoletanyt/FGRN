@@ -12,6 +12,9 @@ struct DisplayInfoPage: View {
     @State var questionsArray: [Question]
     @State var isSheetGive = false
     @State var language: Bool
+    @State var welcomePageActive2: Bool = false
+    @State var isActive2: Bool = false
+    
     //    init() {
     //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
     //        UIScrollView.appearance().backgroundColor = .white
@@ -25,6 +28,8 @@ struct DisplayInfoPage: View {
     @State var contentNumber = 6
     @State var closingNumber = 14
     @State var endNumber = 16
+    
+    @Binding var welcomePageActive: Bool
     
     @Environment(\.dismiss) var dismiss
     
@@ -113,9 +118,11 @@ struct DisplayInfoPage: View {
                     
                     Button(language ? "节省" : "Save", action: {
                         inputManager.addInput(name: emailName, input: questionsArray)
+                        welcomePageActive = false
                         dismiss()
                     })
                     Button(language ? "取消" : "Cancel", role: .cancel, action: {
+                        welcomePageActive = false
                         dismiss()
                     })
                 }, message: {
