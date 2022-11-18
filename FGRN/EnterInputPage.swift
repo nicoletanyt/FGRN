@@ -45,7 +45,9 @@ struct EnterInputPage: View {
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
                         .submitLabel(.next)
-                        .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
+                    
+                        .onSubmit {
+                            if currentQuestionNum < questionsArray.count - 1{
                             questionsArray[currentQuestionNum] = question //saves the question
                             currentQuestionNum += 1
                             question = questionsArray[currentQuestionNum]
@@ -119,7 +121,8 @@ struct EnterInputPage: View {
                                         question = questionsArray[currentQuestionNum]
                                         currentProgress += 1/16 //15 is the number of questions in the array
                                     }
-                                    if currentQuestionNum - 1 == 0 {
+                                    
+                                    if currentQuestionNum == 1 {
                                         //question about time
                                         if questionsArray[currentQuestionNum - 1].input != "" {
                                             //changes only if the input is changed, otherwise it'll give the default "day"
@@ -130,7 +133,7 @@ struct EnterInputPage: View {
                                             }
                                         }
                                     }
-                                    if currentQuestionNum - 1 == 1 {
+                                    if currentQuestionNum == 2 {
                                         //currentQuestionNum == 1: second question about name
                                         if language {
                                             questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input

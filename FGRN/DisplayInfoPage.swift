@@ -12,10 +12,6 @@ struct DisplayInfoPage: View {
     @State var questionsArray: [Question]
     @State var isSheetGive = false
     @State var language: Bool
-    //    init() {
-    //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
-    //        UIScrollView.appearance().backgroundColor = .white
-    //    }
     
     @State private var isDone = false
     @State var isShowAlert = false
@@ -30,7 +26,6 @@ struct DisplayInfoPage: View {
     
     var body: some View {
         NavigationView {
-            //        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
                     ForEach((basicInfoNumber ..< greetingNumber), id: \.self) { question1 in
@@ -146,7 +141,6 @@ struct DisplayInfoPage: View {
                 }
             }
             .navigationBarTitle("Your Final Info")
-            //        }
             .sheet(isPresented: $isSheetGive) {
                 NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, End: $endNumber, typeString: "")
             }
