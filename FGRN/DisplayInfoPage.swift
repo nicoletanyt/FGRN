@@ -20,6 +20,11 @@ struct DisplayInfoPage: View {
     @State private var isDone = false
     @State var isShowAlert = false
     @State var emailName = ""
+    @State var basicInfoNumber = 0
+    @State var greetingNumber = 4
+    @State var contentNumber = 6
+    @State var closingNumber = 14
+    @State var endNumber = 16
     
     @Environment(\.dismiss) var dismiss
     
@@ -28,7 +33,7 @@ struct DisplayInfoPage: View {
             //        NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
-                    ForEach(0..<4) { question1 in
+                    ForEach($basicInfoNumber ..< $greetingNumber) { question1 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question1])
                         } label: {
@@ -46,7 +51,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "问候语" : "Greeting")) {
-                    ForEach(4..<6) { question2 in
+                    ForEach($greetingNumber ..< $contentNumber) { question2 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question2])
                         } label: {
@@ -64,7 +69,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "内容" : "Content")) {
-                    ForEach(6..<14) { question3 in
+                    ForEach(contentNumber ..< closingNumber) { question3 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question3])
                         } label: {
@@ -82,7 +87,7 @@ struct DisplayInfoPage: View {
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "闭幕" : "Closing")) {
-                    ForEach(14..<16) { question4 in
+                    ForEach(closingNumber ..< endNumber) { question4 in
                         NavigationLink {
                             InfoDetailView(question: $questionsArray[question4])
                         } label: {
@@ -135,7 +140,7 @@ struct DisplayInfoPage: View {
             .navigationBarTitle("Your Final Info")
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(questions: $questionsArray, typeString: "love you")
+                NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, typeString: "")
             }
         }
     }

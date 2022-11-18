@@ -11,16 +11,16 @@ struct NewInfoSheet: View {
     @State var infos = ""
     @Binding var questions: [Question]
     @State var contentGenre = 3
-    var BasicInfo = 0
-    var Greeting = 4
-    var Content = 6
-    var Closing = 14
+    @Binding var BasicInfo: Int
+    @Binding var Greeting: Int
+    @Binding var Content: Int
+    @Binding var Closing: Int
 
     @State var typeString: String
 
     
 
-    @State  var ah = ["Basic info", "Greeting", "Content", "Closing"]
+    @State  var ah = ["Basic Info", "Greeting", "Content", "Closing"]
 
     
     @Environment(\.dismiss) var dismiss
@@ -43,14 +43,20 @@ struct NewInfoSheet: View {
 //                           Text("Greeting").tag(1)
 //                           Text("Content").tag(2)
 //                           Text("Closing").tag(3)
-                
+              
             
                        }
             
             
             
             Button("save info") {
-                questions.append(Question(question: "", input: infos, questionType: typeString))
+                if typeString == "Basic Info" {
+                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: 0)
+//                    BasicInfo = BasicInfo + 1
+                    Greeting = Greeting + 1
+                    Content = Content + 1
+                    Closing = Closing + 1
+                }
 //                questions.insert(infos, at: //content gengre thinh)
                 dismiss()
             }

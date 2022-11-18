@@ -18,6 +18,13 @@ struct DisplayHistoryEmailPage: View {
     @State var isDone = false
     @State var emailName = ""
     
+    
+    @State var basicInfoNumber = 0
+    @State var greetingNumber = 4
+    @State var contentNumber = 6
+    @State var closingNumber = 14
+    @State var endNumber = 16
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -119,7 +126,9 @@ struct DisplayHistoryEmailPage: View {
             .navigationBarTitle(inputInfo.name)
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(questions: $inputInfo.input, typeString: "love")
+//                NewInfoSheet(questions: $inputInfo.input, typeString: "love")
+                NewInfoSheet(infos: "", questions: $inputInfo.input, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing:  $closingNumber, typeString: "")
+
             }
         }
     }
