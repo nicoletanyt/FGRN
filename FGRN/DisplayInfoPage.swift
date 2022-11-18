@@ -104,22 +104,22 @@ struct DisplayInfoPage: View {
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 
-                Button("Done") {
+                Button(language ? "完" : "Done") {
                     isDone = true
                     isShowAlert = true
                 }
-                .alert("Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
-                    TextField("Name", text: $emailName)
+                .alert(language ? "输入保存此电子邮件的名称。" : "Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
+                    TextField(language ? "名字" : "Name", text: $emailName)
                     
-                    Button("Save", action: {
+                    Button(language ? "节省" : "Save", action: {
                         inputManager.addInput(name: emailName, input: questionsArray)
                         dismiss()
                     })
-                    Button("Cancel", role: .cancel, action: {
+                    Button(language ? "取消" : "Cancel", role: .cancel, action: {
                         dismiss()
                     })
                 }, message: {
-                    Text("Press Cancel if you do not want to save it.")
+                    Text(language ? "如果不想保存，请按取消。" : "Press Cancel if you do not want to save it.")
                 })
             }
             .interactiveDismissDisabled(!isDone)
@@ -137,7 +137,7 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-            .navigationBarTitle("Your Final Info")
+            .navigationBarTitle(language ? "您的最终信息" : "Your Final Info")
             //        }
             .sheet(isPresented: $isSheetGive) {
                 NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, End: $endNumber, typeString: "")
