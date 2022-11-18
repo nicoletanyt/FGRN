@@ -13,6 +13,7 @@ struct WelcomePage: View {
     }
     
     @State var languageToggle = false
+    @State var isActive: Bool = false
     
     var body: some View {
         NavigationView {
@@ -30,11 +31,11 @@ struct WelcomePage: View {
 //                        .padding()
                         .foregroundColor(.white)
                         .frame(width: 300, height: 100)
-                    NavigationLink {
-                        EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle)
-                    } label: {
+                    
+                    NavigationLink(destination: EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle, welcomePageActive: $isActive), isActive: $isActive) {
                         ButtonDisplay(text: languageToggle ? "写电邮" : "Generator", image: "envelope.circle.fill")
-                        }
+
+                    }
                     
                     NavigationLink {
                         PastInputPage(language: languageToggle)
@@ -48,8 +49,8 @@ struct WelcomePage: View {
                         ButtonDisplay(text: languageToggle ? "教程" : "Tutorial", image: "questionmark.circle.fill")
                     }
                     
-                    NavigationLink {
-                        CreditsPage()
+                    NavigationLink{
+                        CreditsPage(language: languageToggle)
                     } label: {
                         ButtonDisplay(text: languageToggle ? "信用" : "Credits", image: "command.circle.fill")
 

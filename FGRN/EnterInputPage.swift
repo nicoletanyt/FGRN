@@ -14,9 +14,11 @@ struct EnterInputPage: View {
     @State var currentQuestionNum: Int
     @State var currentProgress: CGFloat = 0.0
     @State var language: Bool //true for chinese, false for english
-    
+//    @State var isActive2: Bool = false
+
     @State var isHintGiven = false
     @State var isInfoGiven = false
+    @Binding var welcomePageActive: Bool
     
     var body: some View {
         NavigationView {
@@ -39,20 +41,22 @@ struct EnterInputPage: View {
                     .pickerStyle(.menu)
                     
                 } else {
-                    TextField(language ? "输入" : "Enter Your Input", text: $question.input)
-                        .font(.system(size: 25))
-                        .foregroundColor(Color.lightBlue)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                        .submitLabel(.next)
-                    
-                        .onSubmit {
-                            if currentQuestionNum < questionsArray.count - 1{
-                            questionsArray[currentQuestionNum] = question //saves the question
-                            currentQuestionNum += 1
-                            question = questionsArray[currentQuestionNum]
-                            currentProgress += 1/16 //15 is the number of questions in the array
-                        } }
+                    if #available(iOS 16.0, *) {
+                        TextField(language ? "输入" : "Enter Your Input", text: $question.input, axis: .vertical)
+                            .font(.system(size: 25))
+                            .foregroundColor(Color.lightBlue)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .submitLabel(.next)
+                            .onSubmit {           if currentQuestionNum < questionsArray.count - 1{
+                                questionsArray[currentQuestionNum] = question //saves the question
+                                currentQuestionNum += 1
+                                question = questionsArray[currentQuestionNum]
+                                currentProgress += 1/16 //15 is the number of questions in the array
+                            } }
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 Divider()
                     .frame(height: 4)
@@ -174,7 +178,7 @@ struct EnterInputPage: View {
                     HintsPage(language: language, currentquestion: currentQuestionNum)
                 }
                 .sheet(isPresented: $isInfoGiven) {
-                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language)
+                    DisplayInfoPage(questionsArray: questionsArray, isSheetGive: false, language: language, welcomePageActive: $welcomePageActive)
                 }
         }
     }

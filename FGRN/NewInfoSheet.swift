@@ -20,8 +20,6 @@ struct NewInfoSheet: View {
 
     @State var typeString: String
 
-    
-
     @State  var ah = ["Basic Info", "Greeting", "Content", "Closing"]
 
     
@@ -29,15 +27,19 @@ struct NewInfoSheet: View {
     
     var body: some View {
         Form {
-            TextField("enter extra info", text: $infos)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
+            if #available(iOS 16.0, *) {
+                TextField("enter extra info", text: $infos, axis: .vertical)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+            } else {
+                // Fallback on earlier versions
+            }
+                
             
             Picker("Info Genre", selection: $typeString) {
-//                Text("Choose Type")
-//                    .tag(0)
-//                    .foregroundColor(.green)
-//                    .font(.system(size: 25))
+                Text("Choose Type")
+                    .tag(0)
+                    .font(.system(size: 25))
                 
                 ForEach(ah, id: \.self) { option in
                     Text(option)

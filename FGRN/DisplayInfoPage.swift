@@ -12,6 +12,13 @@ struct DisplayInfoPage: View {
     @State var questionsArray: [Question]
     @State var isSheetGive = false
     @State var language: Bool
+    @State var welcomePageActive2: Bool = false
+    @State var isActive2: Bool = false
+    
+    //    init() {
+    //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.init(.darkTeal)]
+    //        UIScrollView.appearance().backgroundColor = .white
+    //    }
     
     @State private var isDone = false
     @State var isShowAlert = false
@@ -21,6 +28,8 @@ struct DisplayInfoPage: View {
     @State var contentNumber = 6
     @State var closingNumber = 14
     @State var endNumber = 16
+    
+    @Binding var welcomePageActive: Bool
     
     @Environment(\.dismiss) var dismiss
     
@@ -99,22 +108,24 @@ struct DisplayInfoPage: View {
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 
-                Button("Done") {
+                Button(language ? "完" : "Done") {
                     isDone = true
                     isShowAlert = true
                 }
-                .alert("Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
-                    TextField("Name", text: $emailName)
+                .alert(language ? "输入保存此电子邮件的名称。" : "Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
+                    TextField(language ? "名字" : "Name", text: $emailName)
                     
-                    Button("Save", action: {
+                    Button(language ? "节省" : "Save", action: {
                         inputManager.addInput(name: emailName, input: questionsArray)
+                        welcomePageActive = false
                         dismiss()
                     })
-                    Button("Cancel", role: .cancel, action: {
-                        dismiss()
+                    Button(language ? "取消" : "Cancel", role: .cancel, action: {
+//                        welcomePageActive = false
+//                        .cancel()
                     })
                 }, message: {
-                    Text("Press Cancel if you do not want to save it.")
+                    Text(language ? "如果不想保存，请按取消。" : "Press Cancel if you do not want to save it.")
                 })
             }
             .interactiveDismissDisabled(!isDone)
@@ -140,7 +151,8 @@ struct DisplayInfoPage: View {
                     }
                 }
             }
-            .navigationBarTitle("Your Final Info")
+            .navigationBarTitle(language ? "您的最终信息" : "Your Final Info")
+            //        }
             .sheet(isPresented: $isSheetGive) {
                 NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, End: $endNumber, typeString: "")
             }
