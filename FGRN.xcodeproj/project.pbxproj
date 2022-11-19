@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB1290CB94E003FEA6F /* TutorialPage.swift */; };
 		200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */; };
+		204422FE2928624C00FA0EF1 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 204422FD2928624C00FA0EF1 /* FLAnimatedImage */; };
+		204423002928641B00FA0EF1 /* GIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204422FF2928641B00FA0EF1 /* GIFView.swift */; };
+		204423022928B10E00FA0EF1 /* happy-work-from-home.gif in Resources */ = {isa = PBXBuildFile; fileRef = 204423012928B10E00FA0EF1 /* happy-work-from-home.gif */; };
 		204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */; };
 		204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */; };
 		204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */; };
@@ -31,6 +34,8 @@
 /* Begin PBXFileReference section */
 		200F5BB1290CB94E003FEA6F /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPage.swift; sourceTree = "<group>"; };
+		204422FF2928641B00FA0EF1 /* GIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
+		204423012928B10E00FA0EF1 /* happy-work-from-home.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "happy-work-from-home.gif"; sourceTree = "<group>"; };
 		204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayInfoPage.swift; sourceTree = "<group>"; };
 		204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoSheet.swift; sourceTree = "<group>"; };
 		204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204422FE2928624C00FA0EF1 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +93,7 @@
 				A26BB840292209E9006C5070 /* PastInputPage.swift */,
 				A26664272924898300779998 /* UserInput.swift */,
 				A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */,
+				204423012928B10E00FA0EF1 /* happy-work-from-home.gif */,
 				A26BB84429220A5E006C5070 /* FileManager.swift */,
 				A26BB84229220A59006C5070 /* InputDataStore.swift */,
 				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
@@ -94,6 +101,7 @@
 				204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */,
 				204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */,
 				200F5BB1290CB94E003FEA6F /* TutorialPage.swift */,
+				204422FF2928641B00FA0EF1 /* GIFView.swift */,
 				200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */,
 				5268309C291614220068229A /* Chinese Questions.swift */,
 				A255646B290CC169007F3AC6 /* Questions.swift */,
@@ -128,6 +136,9 @@
 			dependencies = (
 			);
 			name = FGRN;
+			packageProductDependencies = (
+				204422FD2928624C00FA0EF1 /* FLAnimatedImage */,
+			);
 			productName = FGRN;
 			productReference = A2D075C729038F45000201FD /* FGRN.app */;
 			productType = "com.apple.product-type.application";
@@ -156,6 +167,9 @@
 				Base,
 			);
 			mainGroup = A2D075BE29038F45000201FD;
+			packageReferences = (
+				204422FC2928624C00FA0EF1 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+			);
 			productRefGroup = A2D075C829038F45000201FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,6 +186,7 @@
 			files = (
 				A2D075D229038F47000201FD /* Preview Assets.xcassets in Resources */,
 				A2D075CF29038F47000201FD /* Assets.xcassets in Resources */,
+				204423022928B10E00FA0EF1 /* happy-work-from-home.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +210,7 @@
 				204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */,
 				200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */,
 				200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */,
+				204423002928641B00FA0EF1 /* GIFView.swift in Sources */,
 				A26664282924898300779998 /* UserInput.swift in Sources */,
 				204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */,
 				A26BB84329220A59006C5070 /* InputDataStore.swift in Sources */,
@@ -399,6 +415,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		204422FC2928624C00FA0EF1 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		204422FD2928624C00FA0EF1 /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204422FC2928624C00FA0EF1 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2D075BF29038F45000201FD /* Project object */;
 }

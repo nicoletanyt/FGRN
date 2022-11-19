@@ -52,7 +52,7 @@ struct WelcomePage: View {
                     NavigationLink{
                         CreditsPage(language: languageToggle)
                     } label: {
-                        ButtonDisplay(text: languageToggle ? "信用" : "Credits", image: "command.circle.fill")
+                        ButtonDisplay(text: languageToggle ? "道谢" : "Credits", image: "command.circle.fill")
 
                             .font(.system(size: 30))
                             .foregroundColor(Color.darkTeal)
