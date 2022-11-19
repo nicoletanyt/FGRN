@@ -14,6 +14,8 @@ extension Color {
     static let lightTeal: Color = .init("lightTeal")
     static let textColor: Color = .init("textColor")
     static let navColor: Color = .init("navigationColor")
+    static let boxColor: Color = .init("boxColor")
+
 
 
 }

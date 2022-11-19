@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct WelcomePage: View {
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
-    }
+//    init() {
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
+//    }
     
     @State var languageToggle = false
     @State var isActive: Bool = false
@@ -29,7 +29,7 @@ struct WelcomePage: View {
                         }
                     Toggle(languageToggle ? "把中文改成英文" : "Change English to Chinese", isOn: $languageToggle)
 //                        .padding()
-                        .foregroundColor(.white)
+//                        .foregroundColor(.white)
                         .frame(width: 300, height: 100)
                     
                     NavigationLink(destination: EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle, welcomePageActive: $isActive), isActive: $isActive) {
@@ -85,7 +85,7 @@ struct ButtonDisplay: View {
         .font(.system(size: 30))
         .foregroundColor(Color.white)
         .frame(width: 300, height: 50)
-        .background(Color.lightBlue)
+        .background(Color.boxColor)
         .cornerRadius(10)
         
     }
