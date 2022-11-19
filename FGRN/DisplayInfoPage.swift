@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DisplayInfoPage: View {
     @EnvironmentObject var inputManager: InputDataStore
-    @State var questionsArray: [Question]
+//    @State var questionsArray: [Question]
     @State var isSheetGive = false
     @State var language: Bool
     @State var welcomePageActive2: Bool = false
@@ -23,11 +23,14 @@ struct DisplayInfoPage: View {
     @State private var isDone = false
     @State var isShowAlert = false
     @State var emailName = ""
-    @State var basicInfoNumber = 0
-    @State var greetingNumber = 4
-    @State var contentNumber = 6
-    @State var closingNumber = 14
-    @State var endNumber = 16
+    @State var page: String = ""
+    
+    @State var basicInfo: [Question]
+    @State var greetingInfo: [Question]
+    @State var contentInfo: [Question]
+    @State var closingInfo: [Question]
+    
+    @State var inputCopy: [String] = [] //stuff to be copied
     
     @Binding var welcomePageActive: Bool
     
@@ -37,72 +40,72 @@ struct DisplayInfoPage: View {
         NavigationView {
             List {
                 Section(header: Text(language ? "基本信息" : "Basic Info")) {
-                    ForEach((basicInfoNumber ..< greetingNumber), id: \.self) { question1 in
+                    ForEach(0..<basicInfo.count, id: \.self) { infoIndex in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question1])
+                            InfoDetailView(question: $basicInfo[infoIndex])
                         } label: {
-                            Text(questionsArray[question1].input)
+                            Text(basicInfo[infoIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        basicInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        basicInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
                 
                 Section(header: Text(language ? "问候语" : "Greeting")) {
-                    ForEach(greetingNumber ..< contentNumber, id: \.self) { question2 in
+                    ForEach(0..<greetingInfo.count, id: \.self) { greetingIndex in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question2])
+                            InfoDetailView(question: $greetingInfo[greetingIndex])
                         } label: {
-                            Text(questionsArray[question2].input)
+                            Text(greetingInfo[greetingIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        greetingInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        greetingInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                
+
                 Section(header: Text(language ? "内容" : "Content")) {
-                    ForEach(contentNumber ..< closingNumber, id: \.self) { question3 in
+                    ForEach(0 ..< contentInfo.count, id: \.self) { contentIndex in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question3])
+                            InfoDetailView(question: $contentInfo[contentIndex])
                         } label: {
-                            Text(questionsArray[question3].input)
+                            Text(contentInfo[contentIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        contentInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        contentInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
                 .listRowBackground(Color.lightTeal)
-                
+
                 Section(header: Text(language ? "结束" : "Closing")) {
-                    ForEach(closingNumber ..< endNumber, id: \.self) { question4 in
+                    ForEach(0 ..< closingInfo.count, id: \.self) { closingIndex in
                         NavigationLink {
-                            InfoDetailView(question: $questionsArray[question4])
+                            InfoDetailView(question: $closingInfo[closingIndex])
                         } label: {
-                            Text(questionsArray[question4].input)
+                            Text(closingInfo[closingIndex].input)
                         }
                     }
                     .onDelete { indexSet in
-                        questionsArray.remove(atOffsets: indexSet)
+                        closingInfo.remove(atOffsets: indexSet)
                     }
                     .onMove { oldOffset, newOffset in
-                        questionsArray.move(fromOffsets: oldOffset, toOffset: newOffset)
+                        closingInfo.move(fromOffsets: oldOffset, toOffset: newOffset)
                     }
                 }
                 .foregroundColor(.textColor)
@@ -115,8 +118,8 @@ struct DisplayInfoPage: View {
                 .alert(language ? "输入电邮的名字。" : "Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
                     TextField(language ? "名字" : "Name", text: $emailName)
                     
-                    Button(language ? "节省" : "Save", action: {
-                        inputManager.addInput(name: emailName, input: questionsArray)
+                    Button(language ? "保存" : "Save", action: {
+                        inputManager.addInput(name: emailName, basicInfo: basicInfo, greetingInfo: greetingInfo, contentInfo: contentInfo, closingInfo: closingInfo)
                         welcomePageActive = false
                         dismiss()
                     })
@@ -144,7 +147,12 @@ struct DisplayInfoPage: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        UIPasteboard.general.strings = [questionsArray[0].input, questionsArray[1].input, questionsArray[2].input, questionsArray[3].input, questionsArray[4].input, questionsArray[5].input, questionsArray[6].input, questionsArray[7].input, questionsArray[8].input, questionsArray[9].input, questionsArray[10].input, questionsArray[11].input, questionsArray[12].input, questionsArray[13].input, questionsArray[14].input, questionsArray[15].input]
+                        for i in basicInfo + greetingInfo + contentInfo + closingInfo {
+                            inputCopy.append(i.input)
+                        }
+                        UIPasteboard.general.strings = inputCopy
+                        
+//                        UIPasteboard.general.strings = [questionsArray[0].input, questionsArray[1].input, questionsArray[2].input, questionsArray[3].input, questionsArray[4].input, questionsArray[5].input, questionsArray[6].input, questionsArray[7].input, questionsArray[8].input, questionsArray[9].input, questionsArray[10].input, questionsArray[11].input, questionsArray[12].input, questionsArray[13].input, questionsArray[14].input, questionsArray[15].input]
                     } label: {
                         Image(systemName: "doc.on.doc")
                             .foregroundColor(.textColor)
@@ -154,7 +162,7 @@ struct DisplayInfoPage: View {
             .navigationBarTitle(language ? "您的最终信息" : "Your Final Info")
             //        }
             .sheet(isPresented: $isSheetGive) {
-                NewInfoSheet(infos: "", questions: $questionsArray, BasicInfo: $basicInfoNumber, Greeting: $greetingNumber, Content: $contentNumber, Closing: $closingNumber, End: $endNumber, typeString: "")
+                NewInfoSheet(basicInfo: $basicInfo, greetingInfo: $greetingInfo, contentInfo: $contentInfo, closingInfo: $closingInfo, typeString: "")
             }
         }
     }

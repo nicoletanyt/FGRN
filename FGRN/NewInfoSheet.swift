@@ -9,13 +9,18 @@ import SwiftUI
 
 struct NewInfoSheet: View {
     @State var infos = ""
-    @Binding var questions: [Question]
+//    @Binding var questions: [Question]
     @State var contentGenre = 3
-    @Binding var BasicInfo: Int
-    @Binding var Greeting: Int
-    @Binding var Content: Int
-    @Binding var Closing: Int
-    @Binding var End: Int
+//    @Binding var BasicInfo: Int = 2
+//    @Binding var Greeting: Int = 2
+//    @Binding var Content: Int = 2
+//    @Binding var Closing: Int
+//    @Binding var End: Int
+    
+    @Binding var basicInfo: [Question]
+    @Binding var greetingInfo: [Question]
+    @Binding var contentInfo: [Question]
+    @Binding var closingInfo: [Question]
 
 
     @State var typeString: String
@@ -61,40 +66,41 @@ struct NewInfoSheet: View {
             
             Button("save info") {
                 if typeString == "Basic Info" {
-                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: BasicInfo)
-//                    BasicInfo = BasicInfo + 1
-                    Greeting = Greeting + 1
-                    Content = Content + 1
-                    Closing = Closing + 1
-                    End = End + 1
-
-                }
-                else if typeString == "Greeting" {
-                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Greeting)
-//                    BasicInfo = BasicInfo + 1
-//                    Greeting = Greeting + 1
-                    Content = Content + 1
-                    Closing = Closing + 1
-                    End = End + 1
-
-                }
-                else if typeString == "Content" {
-                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Content)
-//                    BasicInfo = BasicInfo + 1
-//                    Greeting = Greeting + 1
-//                    Content = Content + 1
-                    Closing = Closing + 1
-                    End = End + 1
-
-                }
-                else if typeString == "Closing" {
-                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Closing)
+//                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: BasicInfo)
 //                    BasicInfo = BasicInfo + 1
 //                    Greeting = Greeting + 1
 //                    Content = Content + 1
 //                    Closing = Closing + 1
-                    End = End + 1
+//                    End = End + 1
+                    basicInfo.append(Question(question: "", input: infos, questionType: typeString))
 
+                }
+                else if typeString == "Greeting" {
+//                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Greeting)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+//                    Content = Content + 1
+//                    Closing = Closing + 1
+//                    End = End + 1
+                    greetingInfo.append(Question(question: "", input: infos, questionType: typeString))
+                }
+                else if typeString == "Content" {
+//                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Content)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+//                    Content = Content + 1
+//                    Closing = Closing + 1
+//                    End = End + 1
+                    contentInfo.append(Question(question: "", input: infos, questionType: typeString))
+                }
+                else if typeString == "Closing" {
+//                    questions.insert((Question(question: "", input: infos, questionType: typeString)), at: Closing)
+//                    BasicInfo = BasicInfo + 1
+//                    Greeting = Greeting + 1
+//                    Content = Content + 1
+//                    Closing = Closing + 1
+//                    End = End + 1
+                    closingInfo.append(Question(question: "", input: infos, questionType: typeString))
                 }
 //                questions.insert(infos, at: //content gengre thinh)
                 dismiss()
