@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FLAnimatedImage
 
 struct TutorialPage: View {
     
@@ -30,19 +31,22 @@ struct TutorialPage: View {
                     Text(language ? "这个应用程序是电子邮件的计划者。" : "This app is a planner for emails.")
                         .font(.title)
                         .padding()
+                    GIFView(type: .name("happy-work-from-home"))
+                        .frame(maxHeight: 300)
+                        .padding()
                 }
                 VStack {
-                    Text(language ? "会有问题，输入你的答案来建立你的电子邮件！" : "There will be questions, input your answers to them to build out your email!")
+                    Text(language ? "把你的答案输入在问题里面，制造你的电邮！" : "There will be questions, input your answers to them to build out your email!")
                         .font(.title)
                         .padding()
                 }
                 VStack {
-                    Text(language ? "按“生成”。" : "Press “generate”.")
+                    Text(language ? "按“完成”。" : "Press “generate”.")
                         .font(.title)
                         .padding()
                 }
                 VStack {
-                    Text(language ? "完毕！ 现在您可以使用这些信息来编写您的电子邮件。" : "Done! Now you can use the information to write your email.")
+                    Text(language ? "完了！ 现在你可以使用这些信息来编写您的电子邮件。" : "Done! Now you can use the information to write your email.")
                         .font(.title)
                         .padding()
                 }
