@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct WelcomePage: View {
-//    init() {
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
-//    }
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.init(.white)]
+    }
     
     @State var languageToggle = false
     @State var isActive: Bool = false
@@ -28,13 +28,12 @@ struct WelcomePage: View {
                             Circle()
                         }
                     Toggle(languageToggle ? "把中文改成英文" : "Change English to Chinese", isOn: $languageToggle)
-//                        .padding()
-//                        .foregroundColor(.white)
+                    //                        .padding()
+                        .foregroundColor(.white)
                         .frame(width: 300, height: 100)
-                    
-                    NavigationLink(destination: EnterInputPage(question: languageToggle ? arrayOfChineseQuestions[0] : arrayOfQuestions[0], questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle, welcomePageActive: $isActive), isActive: $isActive) {
+                    NavigationLink(destination: EnterInputPage(questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle, welcomePageActive: $isActive), isActive: $isActive) {
                         ButtonDisplay(text: languageToggle ? "写电邮" : "Generator", image: "envelope.circle.fill")
-
+                        
                     }
                     
                     NavigationLink {
@@ -52,8 +51,8 @@ struct WelcomePage: View {
                     NavigationLink{
                         CreditsPage(language: languageToggle)
                     } label: {
-                        ButtonDisplay(text: languageToggle ? "道谢" : "Credits", image: "command.circle.fill")
-
+                        ButtonDisplay(text: languageToggle ? "信用" : "Credits", image: "command.circle.fill")
+                        
                             .font(.system(size: 30))
                             .foregroundColor(Color.darkTeal)
                             .frame(width: 300, height: 40)
@@ -73,7 +72,7 @@ struct WelcomePage: View {
 struct ButtonDisplay: View {
     var text: String
     var image: String
-
+    
     var body: some View {
         HStack {
             Text(text)
@@ -85,7 +84,7 @@ struct ButtonDisplay: View {
         .font(.system(size: 30))
         .foregroundColor(Color.white)
         .frame(width: 300, height: 50)
-        .background(Color.boxColor)
+        .background(Color.lightBlue)
         .cornerRadius(10)
         
     }

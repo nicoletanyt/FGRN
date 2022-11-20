@@ -16,7 +16,7 @@ struct Question: Identifiable, Codable, Hashable {
     var questionType: String
 }
 
-var greetingFills = ["Morning ", "Name "] //Good [morning / afternoon / evening / day] [name]
+var basicInfo = ["Time": "", "Name": "", "Job": ""] //dictionary of the basic info that the user inputs
 
 var arrayOfQuestions: [Question] = [
     //Questions needed for email info

@@ -115,7 +115,7 @@ struct DisplayInfoPage: View {
                     isDone = true
                     isShowAlert = true
                 }
-                .alert(language ? "输入电邮的名字。" : "Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
+                .alert(language ? "输入保存此电子邮件的名称。" : "Enter a name for saving this email.", isPresented: $isShowAlert, actions: {
                     TextField(language ? "名字" : "Name", text: $emailName)
                     
                     Button(language ? "保存" : "Save", action: {
@@ -147,6 +147,7 @@ struct DisplayInfoPage: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        inputCopy = []
                         for i in basicInfo + greetingInfo + contentInfo + closingInfo {
                             inputCopy.append(i.input)
                         }

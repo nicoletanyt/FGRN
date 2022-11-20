@@ -9,9 +9,8 @@ import SwiftUI
 
 struct EnterInputPage: View {
     //    @EnvironmentObject var inputManager: InputDataStore
-    @State var question: Question
     @State var questionsArray: [Question]
-    @State var currentQuestionNum: Int
+    @State var currentQuestionNum: Int = 0
     @State var currentProgress: CGFloat = 0.0
     @State var language: Bool //true for chinese, false for english
     //    @State var isActive2: Bool = false
@@ -23,13 +22,13 @@ struct EnterInputPage: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(question.question)
+                Text(questionsArray[currentQuestionNum].question)
                     .foregroundColor(Color.textColor)
                     .font(.system(.largeTitle))
                     .padding(.bottom, 200)
-                if question.options != [] {
-                    Picker(selection: $question.input) {
-                        ForEach(question.options, id: \.self) { option in
+                if questionsArray[currentQuestionNum].options != [] {
+                    Picker(selection: $questionsArray[currentQuestionNum].input) {
+                        ForEach(questionsArray[currentQuestionNum].options, id: \.self) { option in
                             Text(option)
                                 .tag(option)
                                 .foregroundColor(Color.lightBlue)
@@ -42,19 +41,14 @@ struct EnterInputPage: View {
                     
                 } else {
                     if #available(iOS 16.0, *) {
-                        TextField(language ? "输入" : "Enter Your Input", text: $question.input, axis: .vertical)
+                        TextField(language ? "输入" : "Enter Your Input", text: $questionsArray[currentQuestionNum].input, axis: .vertical)
                             .font(.system(size: 25))
                             .foregroundColor(Color.lightBlue)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
                             .submitLabel(.next)
                             .onSubmit {
-                                if currentQuestionNum < questionsArray.count - 1 {
-                                    questionsArray[currentQuestionNum] = question //saves the question
-                                    currentQuestionNum += 1
-                                    question = questionsArray[currentQuestionNum]
-                                    currentProgress += 1/16 //15 is the number of questions in the array
-                                }
+                                updateQuestion()
                             }
                     } else {
                         // Fallback on earlier versions
@@ -184,9 +178,7 @@ struct EnterInputPage: View {
                             isHintGiven = false
                             //Toggle previous question
                             if currentQuestionNum > 0 {
-                                questionsArray[currentQuestionNum] = question //saves the question
                                 currentQuestionNum -= 1
-                                question = questionsArray[currentQuestionNum]
                                 currentProgress -= 1/16
                             }
                         } label: {
@@ -196,64 +188,17 @@ struct EnterInputPage: View {
                         }
                         Spacer()
                         if currentQuestionNum == arrayOfQuestions.count - 1 {
-                            //                                NavigationLink {
                             Button {
-                                //                                    DisplayInfoPage(questionsArray: questionsArray, language: language)
+                                //                                print(questionsArray.filter {$0.questionType == "Closing"})
                                 isInfoGiven = true
                             } label: {
                                 toggleButton(type: language ? "制造" : "Generate")
                             }
-                            //                                .onAppear {
-                            //                                    inputManager.addInput(questionsArray) //saves the input
-                            //                                }
                         } else {
-                            Button {
+                            Button { //Toggle next question
                                 isHintGiven = false
-                                //Toggle next question
-                                if currentQuestionNum < questionsArray.count - 1{
-                                    questionsArray[currentQuestionNum] = question //saves the question
-                                    currentQuestionNum += 1
-                                    question = questionsArray[currentQuestionNum]
-                                    currentProgress += 1/16 //15 is the number of questions in the array
-                                }
-                                
-                                if currentQuestionNum == 1 {
-                                    //question about time
-                                    if questionsArray[currentQuestionNum - 1].input != "" {
-                                        //changes only if the input is changed, otherwise it'll give the default "day"
-                                        if language {
-                                            chineseGreetingFills[0] = questionsArray[currentQuestionNum - 1].input
-                                        } else {
-                                            greetingFills[0] = questionsArray[currentQuestionNum - 1].input
-                                        }
-                                    }
-                                }
-                                if currentQuestionNum == 2 {
-                                    //currentQuestionNum == 1: second question about name
-                                    if language {
-                                        questionsArray[4].options[1] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[4] = "问候" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[6] = "你好" + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[5] = chineseGreetingFills[0] + "好" +  chineseGreetingFills[1]
-                                        chineseGreetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
-                                        //                                        questionsArray[15].options[0] = chineseGreetingFills[1] + "祝"
-                                        //                                        questionsArray[15].options[1] = chineseGreetingFills[1]
-                                    } else {
-                                        questionsArray[4].options[1] = "Dear " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[4] = "Greetings " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[6] = "Hi " + questionsArray[currentQuestionNum - 1].input
-                                        questionsArray[4].options[5] = "Good " + greetingFills[0] + " " + greetingFills[1]
-                                        greetingFills[1] = questionsArray[currentQuestionNum - 1].input //sets the name
-                                    }
-                                }
-                                if currentQuestionNum - 1 == 2 {
-                                    //currentQuestionNum == 2: third question about job of person
-                                    //this code will run when the current question is the next question so currentQuestionNum - 1 gives the answer of the previous question answered
-                                    if language {
-                                        questionsArray[4].options[2] = "亲爱的" + questionsArray[currentQuestionNum - 1].input
-                                    } else {
-                                        questionsArray[4].options[2] = "Dear " + questionsArray[currentQuestionNum - 1].input
-                                    }
+                                if currentQuestionNum < questionsArray.count{
+                                    updateQuestion()
                                 }
                             } label: {
                                 toggleButton(type: language ? "下一题" : "Next")
@@ -269,8 +214,36 @@ struct EnterInputPage: View {
             DisplayInfoPage(language: language, basicInfo: questionsArray.filter {$0.questionType == "Basic Info" && $0.input != ""}, greetingInfo: questionsArray.filter {$0.questionType == "Greeting" && $0.input != ""}, contentInfo: questionsArray.filter {$0.questionType == "Content" && $0.input != ""}, closingInfo: questionsArray.filter {$0.questionType == "Closing" && $0.input != ""}, welcomePageActive: $welcomePageActive)
         }
     }
+    
+    func updateQuestion() {
+        switch(currentQuestionNum) {
+        case 0:
+            basicInfo["Time"] = questionsArray[currentQuestionNum].input
+            break
+        case 1:
+            basicInfo["Name"] = questionsArray[currentQuestionNum].input
+            if basicInfo["Name"] != "" {
+                questionsArray[4].options[1] = language ? "亲爱的" : "Dear " + (basicInfo["Name"] ?? "")
+                questionsArray[4].options[4] = language ? "问候" : "Greetings " + (basicInfo["Name"] ?? "")
+                questionsArray[4].options[6] = language ? "你好" : "Hi " + (basicInfo["Name"] ?? "")
+                if basicInfo["Time"] != "" {
+                    questionsArray[4].options[5] = language ? (basicInfo["Name"] ?? "") + "好" +  (basicInfo["Name"] ?? "") : "Good " + (basicInfo["Time"] ?? "") + " " + (basicInfo["Name"] ?? "")
+                }
+            }
+            break
+        case 2:
+            basicInfo["Job"] = questionsArray[currentQuestionNum].input
+            if basicInfo["Job"] != "" {
+                questionsArray[4].options[2] = language ? "亲爱的" : "Dear " + (basicInfo["Job"] ?? "")
+            }
+            break
+        default:
+            break
+        }
+        currentQuestionNum += 1
+        currentProgress += 1/16
+    }
 }
-
 struct toggleButton: View {
     var type: String
     
