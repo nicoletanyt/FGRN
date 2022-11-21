@@ -29,7 +29,7 @@ struct WelcomePage: View {
                         }
                     Toggle(languageToggle ? "把中文改成英文" : "Change English to Chinese", isOn: $languageToggle)
                     //                        .padding()
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.navColor)
                         .frame(width: 300, height: 100)
                     NavigationLink(destination: EnterInputPage(questionsArray: languageToggle ? arrayOfChineseQuestions : arrayOfQuestions, currentQuestionNum: 0, language: languageToggle, welcomePageActive: $isActive), isActive: $isActive) {
                         ButtonDisplay(text: languageToggle ? "写电邮" : "Generator", image: "envelope.circle.fill")
