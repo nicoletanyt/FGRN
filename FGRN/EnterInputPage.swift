@@ -31,12 +31,12 @@ struct EnterInputPage: View {
                         ForEach(questionsArray[currentQuestionNum].options, id: \.self) { option in
                             Text(option)
                                 .tag(option)
-                                .foregroundColor(Color.lightBlue)
                                 .font(.system(size: 25))
                         }
                     } label: {
                         Text("Picker")
                     }
+                    .accentColor(Color.textColor)
                     .pickerStyle(.menu)
                     
                 } else {
