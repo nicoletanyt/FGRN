@@ -150,7 +150,7 @@ struct EnterInputPage: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ZStack (alignment: .leading) {
                         RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(Color.darkTeal)
+                            .foregroundColor(Color.conDarkTeal)
                             .frame(width: 300, height: 30)
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.white)
@@ -166,7 +166,7 @@ struct EnterInputPage: View {
                     } label: {
                         Image(systemName: "questionmark")
                             .padding(10)
-                            .background(Color.darkTeal)
+                            .background(Color.conDarkTeal)
                             .foregroundColor(Color.white)
                             .cornerRadius(50)
                     }
@@ -253,7 +253,7 @@ struct toggleButton: View {
             Image(systemName: type == "Back" || type == "返回" ? "arrowtriangle.left.fill": "arrowtriangle.right.fill")
         }
         .padding()
-        .background(Color.darkTeal)
+        .background(Color.conDarkTeal)
         .foregroundColor(Color.white)
         .cornerRadius(15)
     }
