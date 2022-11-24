@@ -21,7 +21,7 @@ struct EnterInputPage: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment:.leading){
                 Text(questionsArray[currentQuestionNum].question)
                     .foregroundColor(Color.textColor)
                     .font(.system(.largeTitle))
