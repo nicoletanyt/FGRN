@@ -30,7 +30,7 @@ struct DisplayInfoPage: View {
     @State var contentInfo: [Question]
     @State var closingInfo: [Question]
     
-    @State var inputCopy: [String] = [] //stuff to be copied
+    @State var inputCopy: String = "" //stuff to be copied
     
     @Binding var welcomePageActive: Bool
     
@@ -147,11 +147,11 @@ struct DisplayInfoPage: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        inputCopy = []
+                        inputCopy = ""
                         for i in basicInfo + greetingInfo + contentInfo + closingInfo {
-                            inputCopy.append(i.input)
+                            inputCopy.append(i.input + "\n")
                         }
-                        UIPasteboard.general.strings = inputCopy
+                        UIPasteboard.general.string = inputCopy
                         
 //                        UIPasteboard.general.strings = [questionsArray[0].input, questionsArray[1].input, questionsArray[2].input, questionsArray[3].input, questionsArray[4].input, questionsArray[5].input, questionsArray[6].input, questionsArray[7].input, questionsArray[8].input, questionsArray[9].input, questionsArray[10].input, questionsArray[11].input, questionsArray[12].input, questionsArray[13].input, questionsArray[14].input, questionsArray[15].input]
                     } label: {
