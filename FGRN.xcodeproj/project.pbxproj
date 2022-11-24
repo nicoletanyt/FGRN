@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		200F5BB2290CB94E003FEA6F /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB1290CB94E003FEA6F /* TutorialPage.swift */; };
 		200F5BB4290CC5C7003FEA6F /* CreditsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */; };
+		2030F8E2292B3297009F8403 /* tutorial-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2030F8E1292B3297009F8403 /* tutorial-1.gif */; };
+		2030F8E4292B38B8009F8403 /* tutorial-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2030F8E3292B38B8009F8403 /* tutorial-2.gif */; };
+		2030F8E6292B38C0009F8403 /* tutorial-3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2030F8E5292B38C0009F8403 /* tutorial-3.gif */; };
+		2030F8E8292B390B009F8403 /* tutorial-4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2030F8E7292B390B009F8403 /* tutorial-4.gif */; };
 		204422FE2928624C00FA0EF1 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 204422FD2928624C00FA0EF1 /* FLAnimatedImage */; };
 		204423002928641B00FA0EF1 /* GIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204422FF2928641B00FA0EF1 /* GIFView.swift */; };
-		204423022928B10E00FA0EF1 /* happy-work-from-home.gif in Resources */ = {isa = PBXBuildFile; fileRef = 204423012928B10E00FA0EF1 /* happy-work-from-home.gif */; };
 		204B7C9C2915F15D007BD2F9 /* DisplayInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */; };
 		204B7C9E2915F86F007BD2F9 /* NewInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */; };
 		204B7CA029160EA9007BD2F9 /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */; };
@@ -34,8 +37,11 @@
 /* Begin PBXFileReference section */
 		200F5BB1290CB94E003FEA6F /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		200F5BB3290CC5C7003FEA6F /* CreditsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPage.swift; sourceTree = "<group>"; };
+		2030F8E1292B3297009F8403 /* tutorial-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "tutorial-1.gif"; sourceTree = "<group>"; };
+		2030F8E3292B38B8009F8403 /* tutorial-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "tutorial-2.gif"; sourceTree = "<group>"; };
+		2030F8E5292B38C0009F8403 /* tutorial-3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "tutorial-3.gif"; sourceTree = "<group>"; };
+		2030F8E7292B390B009F8403 /* tutorial-4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "tutorial-4.gif"; sourceTree = "<group>"; };
 		204422FF2928641B00FA0EF1 /* GIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
-		204423012928B10E00FA0EF1 /* happy-work-from-home.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "happy-work-from-home.gif"; sourceTree = "<group>"; };
 		204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayInfoPage.swift; sourceTree = "<group>"; };
 		204B7C9D2915F86F007BD2F9 /* NewInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoSheet.swift; sourceTree = "<group>"; };
 		204B7C9F29160EA9007BD2F9 /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
@@ -92,8 +98,11 @@
 				A2556465290CB5A5007F3AC6 /* WelcomePage.swift */,
 				A26BB840292209E9006C5070 /* PastInputPage.swift */,
 				A26664272924898300779998 /* UserInput.swift */,
+				2030F8E1292B3297009F8403 /* tutorial-1.gif */,
+				2030F8E3292B38B8009F8403 /* tutorial-2.gif */,
+				2030F8E5292B38C0009F8403 /* tutorial-3.gif */,
+				2030F8E7292B390B009F8403 /* tutorial-4.gif */,
 				A2556469290CBDDE007F3AC6 /* EnterInputPage.swift */,
-				204423012928B10E00FA0EF1 /* happy-work-from-home.gif */,
 				A26BB84429220A5E006C5070 /* FileManager.swift */,
 				A26BB84229220A59006C5070 /* InputDataStore.swift */,
 				204B7C9B2915F15D007BD2F9 /* DisplayInfoPage.swift */,
@@ -184,9 +193,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2030F8E8292B390B009F8403 /* tutorial-4.gif in Resources */,
+				2030F8E2292B3297009F8403 /* tutorial-1.gif in Resources */,
+				2030F8E4292B38B8009F8403 /* tutorial-2.gif in Resources */,
 				A2D075D229038F47000201FD /* Preview Assets.xcassets in Resources */,
 				A2D075CF29038F47000201FD /* Assets.xcassets in Resources */,
-				204423022928B10E00FA0EF1 /* happy-work-from-home.gif in Resources */,
+				2030F8E6292B38C0009F8403 /* tutorial-3.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
