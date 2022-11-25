@@ -27,7 +27,7 @@ struct TutorialPage: View {
                         .font(.title)
                         .padding()
                     GIFView(type: .name("tutorial-1"))
-                        .frame(maxWidth: 200, maxHeight: 500)
+                        .frame(maxWidth: 170, maxHeight: 500)
                         .padding()
                 }
                 VStack {
@@ -35,7 +35,7 @@ struct TutorialPage: View {
                         .font(.title)
                         .padding()
                     GIFView(type: .name("tutorial-2"))
-                        .frame(maxWidth: 200, maxHeight: 500)
+                        .frame(maxWidth: 140, maxHeight: 350)
                         .padding()
                 }
                 VStack {
@@ -43,7 +43,7 @@ struct TutorialPage: View {
                         .font(.title)
                         .padding()
                     GIFView(type: .name("tutorial-3"))
-                        .frame(maxWidth: 200, maxHeight: 500)
+                        .frame(maxWidth: 170, maxHeight: 325)
                         .padding()
                 }
                 VStack {
@@ -51,7 +51,7 @@ struct TutorialPage: View {
                         .font(.title)
                         .padding()
                     GIFView(type: .name("tutorial-4"))
-                        .frame(maxWidth: 200, maxHeight: 500)
+                        .frame(maxWidth: 170, maxHeight: 500)
                         .padding()
                 }
             }
