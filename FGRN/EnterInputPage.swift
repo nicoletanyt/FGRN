@@ -18,7 +18,7 @@ struct EnterInputPage: View {
     @State var isHintGiven = false
     @State var isInfoGiven = false
     @Binding var welcomePageActive: Bool
-    
+    @FocusState var inputFieldFocus: Bool
     var body: some View {
         NavigationView {
             ScrollView {
@@ -43,6 +43,7 @@ struct EnterInputPage: View {
                     } else {
                         if #available(iOS 16.0, *) {
                             TextField(language ? "输入" : "Enter Your Input", text: $questionsArray[currentQuestionNum].input, axis: .vertical)
+                                .focused($inputFieldFocus)
                                 .font(.system(size: 25))
                                 .foregroundColor(Color.lightBlue)
                                 .textInputAutocapitalization(.never)
@@ -213,6 +214,15 @@ struct EnterInputPage: View {
                 }
             }
             .scrollDismissesKeyboard(.immediately)
+            .toolbar {
+                if inputFieldFocus {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Button("Done") {
+                            inputFieldFocus = false
+                        }
+                    }
+                }
+            }
         }
         .sheet(isPresented: $isInfoGiven) {
             DisplayInfoPage(language: language, basicInfo: questionsArray.filter {$0.questionType == "Basic Info" && $0.input != ""}, greetingInfo: questionsArray.filter {$0.questionType == "Greeting" && $0.input != ""}, contentInfo: questionsArray.filter {$0.questionType == "Content" && $0.input != ""}, closingInfo: questionsArray.filter {$0.questionType == "Closing" && $0.input != ""}, welcomePageActive: $welcomePageActive)
